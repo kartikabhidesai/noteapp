@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Auth::routes();
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function() {
+    return Redirect::to('login');
 });
+//Route::get('/', function() { return Redirect::to('login'); });
+
+Route::match(['get', 'post'], 'login', ['as' => 'login', 'uses' => 'LoginController@auth']);
