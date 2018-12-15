@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2018 at 05:08 AM
+-- Generation Time: Dec 15, 2018 at 04:30 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_image` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -43,8 +44,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_image`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin admin', 'admin@admin.com', '$2y$12$SVnRH9z4fFbwGVAslC0umeId8nm6GeG2sitYuYn.cSAJ2REvv3z8G', '', 'XttLEj1fZE9GA7yyGpxmvDdXpwOO1rUkNm11YMors6n9dlhF8ollcJY9Ub30', '2018-08-04 07:30:00', '2018-12-13 05:48:03');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `user_image`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'admin admin', '', 'admin@admin.com', '$2y$12$SVnRH9z4fFbwGVAslC0umeId8nm6GeG2sitYuYn.cSAJ2REvv3z8G', '', 'XttLEj1fZE9GA7yyGpxmvDdXpwOO1rUkNm11YMors6n9dlhF8ollcJY9Ub30', '2018-08-04 07:30:00', '2018-12-13 05:48:03'),
+(2, 'shailesh', 'test', 'b.ak@officepark.group', '$2y$10$P/k9.uEOzuIgcEzoNAubL.nTs9gttJS7.vG6Sdkey327uoQscMmhC', NULL, NULL, '2018-12-15 09:59:32', '2018-12-15 09:59:32'),
+(3, 'shailesh', 'ddfdsfds', 'kartikdesai1234@gmail.com', '$2y$10$kJxciAsp7FQLZznpKFSMmebwNacxr6fsdfu5WLZFRpX3ea0.R5dQu', NULL, NULL, '2018-12-15 09:59:58', '2018-12-15 09:59:58');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +67,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -37,10 +37,23 @@ var Customer = function() {
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);
         });
-
     };
- var password = function() {
 
+     var register = function() {
+        var form = $('#register');
+        var rules = {
+            first_name: {required: true},
+            last_name: {required: true},
+            email: {required: true, email: true},
+            password: {required: true},
+            cpassword: {required: true, equalTo: "#password"}
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form);
+        });
+    };
+
+    var password = function() {
         var form = $('#forgot-password');
         var rules = {
             email: {required: true, email: true},
@@ -48,10 +61,9 @@ var Customer = function() {
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);
         });
-
     };
-    var edit_customer = function() {
 
+    var edit_customer = function() {
         var form = $('#editUser');
         var rules = {
             first_name: {required: true},
@@ -59,7 +71,6 @@ var Customer = function() {
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);
         });
-
     };
 
 
@@ -75,6 +86,10 @@ var Customer = function() {
         },
         forgotInit: function() {
             password();
+        }, 
+        registerInit: function() {
+
+            register();
         },
     };
 }();

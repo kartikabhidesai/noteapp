@@ -1,94 +1,85 @@
-@extends('layouts.app')
-
+@extends('layouts.login_layout')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+<div class="o-page__card o-page--center">
+    <div class="c-card u-mb-xsmall">
+        <header class="c-card__header u-pt-large">
+            <a class="c-card__icon" href="#!">
+                <img src="{{ asset('img/logo-login.svg') }}" alt="Dashboard UI Kit">
+            </a>
+            <h1 class="u-h3 u-text-center u-mb-zero">Welcome back! Please register.</h1>
+        </header>
+        
+        <div id="errorSection" style="width:100% !important;">
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
-                            <label for="text" class="col-md-4 control-label">Type</label>
-
-                            <div class="col-md-6">
-                                <select class="form-control" name="type" required>
-                                    <option value="0">User</option>
-                                    <option value="1">Customer</option>
-                                    <option value="2">Admin</option>
-                                </select>
-
-                                @if ($errors->has('type'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('type') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+            @if (session('session_error'))
+            <div class="alert alert-danger">
+                {{ session('session_error') }}
+                <div class="pull-right closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
             </div>
+            @endif
+
+            @if (session('session_success'))
+            <div class="alert alert-success">
+                {{ session('session_success') }}
+                <div class="pull-right closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
+            </div>
+            @endif
+
+            @if (session('session_alert'))
+            <div class="alert alert-warning">
+                {{ session('session_alert') }}
+                <div class="pull-right closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
+            </div>
+            @endif
         </div>
+
+        <form class="form-horizontal c-card__body register" id="register" method="POST" action="{{ route('register') }}">
+            {{ csrf_field() }}
+                    <div class="c-field u-mb-small">
+                        <label class="c-field__label" for="first_name">First Name</label> 
+                        <input class="c-input" type="text" name="first_name" id="first_name" placeholder="First Name"> 
+                    </div>
+                    
+                    <div class="c-field u-mb-small">
+                        <label class="c-field__label" for="last_name">Last Name</label> 
+                        <input class="c-input" type="text" name="last_name" id="last_name" placeholder="Last Name"> 
+                    </div>
+                    
+                    <div class="c-field u-mb-small">
+                        <label class="c-field__label" for="input1">E-mail address</label> 
+                        <input class="c-input" type="email" name="email" id="input1" placeholder="clark@dashboard.com"> 
+                    </div>
+                    
+                    <div class="c-field u-mb-small">
+                        <label class="c-field__label" for="password">Password</label> 
+                        <input class="c-input" type="password" name="password" id="password" placeholder="Numbers, Letters..."> 
+                    </div>
+
+                    <div class="c-field u-mb-small">
+                        <label class="c-field__label" for="cpassword">Confirm Password</label> 
+                        <input class="c-input" type="password" name="cpassword" id="cpassword" placeholder="Confirm Password"> 
+                    </div>
+                    <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <div class="o-line">
+        <a class="u-text-mute u-text-small" href="{{ route('login') }}">Goto Login</a>
     </div>
 </div>
+
+<style>
+    .alert {
+    margin: 0px 10px;
+    }
+    .alert-danger{
+       background-color: #fc9680; 
+    }
+    .alert-success{
+       background-color: #8ddd72; 
+    }
+    .alert-warning{
+       background-color: #f2ec89; 
+    }
+</style>
 @endsection

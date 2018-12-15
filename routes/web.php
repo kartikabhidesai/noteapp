@@ -22,6 +22,7 @@ Route::get('/', function() {
 //Route::get('/', function() { return Redirect::to('login'); });
 
 Route::match(['get', 'post'], 'login', ['as' => 'login', 'uses' => 'LoginController@auth']);
+Route::match(['get', 'post'], 'register', ['as' => 'register', 'uses' => 'LoginController@register']);
 Route::match(['get', 'post'], 'logout', ['as' => 'logout', 'uses' => 'LoginController@getLogout']);
 $userPrefix = "";
 Route::group(['prefix' => $userPrefix, 'middleware' => ['auth']], function() {

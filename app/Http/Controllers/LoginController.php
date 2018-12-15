@@ -50,7 +50,8 @@ class LoginController extends Controller {
 
             if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
                 $loginData = array(
-                    'name' => Auth::guard('web')->user()->name,
+                    'name' => Auth::guard('web')->user()->first_name,
+                    'last_name' => Auth::guard('web')->user()->last_name,
                     'email' => Auth::guard('web')->user()->email,
                     'user_image' => Auth::guard('web')->user()->user_image,
                     'id' => Auth::guard('web')->user()->id
@@ -63,7 +64,6 @@ class LoginController extends Controller {
                 return redirect()->route('login');
             }
         }
-
         return view('auth.login');
     }
 
@@ -76,6 +76,30 @@ class LoginController extends Controller {
     public function resetGuard() {
         Session::forget('logindata');
         Session::forget('userRole');
+    } 
+    public function register(Request $request) {
+
+        if ($request->isMethod('post')) {
+           // print_r($request->input());exit;
+            $objUser = new Users();
+            $userList = $objUser->saveUserInfo($request);
+            if ($userList) {
+                $return['status'] = 'success';
+                $return['message'] = 'User created successfully.';
+                $return['redirect'] = route('login');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+
+        $data['css'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
+        $data['js'] = array('admin/user.js');
+        $data['funinit'] = array('Customer.registerInit()');
+        return view('auth.register', $data);
     }
 
 }

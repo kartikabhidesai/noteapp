@@ -56,22 +56,17 @@
             </div>
 
             <button class="c-btn c-btn--info c-btn--fullwidth" type="submit">Sign in to Dashboard</button>
-
             <span class="c-divider c-divider--small has-text u-mv-medium">Login via social networks</span>
-
             <div class="o-line">
                 <a class="c-icon u-bg-twitter" href="#!">
                     <i class="fa fa-twitter"></i>
                 </a>
-
                 <a class="c-icon u-bg-facebook" href="#!">
                     <i class="fa fa-facebook"></i>
                 </a>
-
                 <a class="c-icon u-bg-pinterest" href="#!">
                     <i class="fa fa-pinterest"></i>
                 </a>
-
                 <a class="c-icon u-bg-dribbble" href="#!">
                     <i class="fa fa-dribbble"></i>
                 </a>
@@ -80,8 +75,8 @@
     </div>
 
     <div class="o-line">
-        <a class="u-text-mute u-text-small" href="register.html">Don't have an account yet? Get Started</a>
-        <a class="u-text-mute u-text-small" href="forgot-password.html">Forgot Password?</a>
+        <a class="u-text-mute u-text-small" href="{{ route('register') }}">Don't have an account yet? Get Started</a>
+        <a class="u-text-mute u-text-small" href="javascript:;">Forgot Password?</a>
     </div>
 </div>
 
