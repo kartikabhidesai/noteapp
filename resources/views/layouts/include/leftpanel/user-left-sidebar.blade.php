@@ -10,11 +10,6 @@
                     <i class="fa fa-home u-mr-xsmall"></i>Overview
                 </a>
             </li>
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link" href="javascript:;">
-                    <i class="fa fa-user-o u-mr-xsmall"></i>Manage User
-                </a>
-            </li>
         </ul>
     </div>
 </div>
