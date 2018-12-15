@@ -6,23 +6,11 @@
         @php
         $session = Session::all();
         @endphp
-        <input type="hidden" id="loginusertype" value="{{ $session['logindata'][0]['type'] }}">
+        <input type="hidden" id="loginusertype" value="{{ $session['logindata'][0]['name'] }}">
         
         @include('layouts.include.breadcrumb')
         @include('layouts.include.message')
-        
-        @if($session['logindata'][0]['type'] == 'ADMIN')
-            @include('layouts.include.leftpanel.admin-left-sidebar')
-        @elseif($session['logindata'][0]['type'] == 'CUSTOMER')
-            @include('layouts.include.leftpanel.custome-left-sidebar')
-        @elseif($session['logindata'][0]['type'] == 'USER')
-            @include('layouts.include.leftpanel.user-left-sidebar')
-        @elseif($session['logindata'][0]['type'] == 'AGENT')
-            @include('layouts.include.leftpanel.agent-left-sidebar')
-        @else
-        
-        @endif
-        
+        @include('layouts.include.leftpanel.user-left-sidebar')
     <main class="o-page__content">
         @yield('content')
     </main>

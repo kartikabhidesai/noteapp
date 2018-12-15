@@ -43,23 +43,21 @@ class LoginController extends Controller {
 //        }
 
         if ($request->isMethod('post')) {
-
             $this->validate($request, [
                 'email' => 'required|email',
                 'password' => 'required'
             ]);
 
-            if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'type' => 'USER'])) {
+            if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
                 $loginData = array(
                     'name' => Auth::guard('web')->user()->name,
                     'email' => Auth::guard('web')->user()->email,
-                    'type' => Auth::guard('web')->user()->type,
                     'user_image' => Auth::guard('web')->user()->user_image,
                     'id' => Auth::guard('web')->user()->id
                 );
                 Session::push('logindata', $loginData);
                 $request->session()->flash('session_success', 'User Login successfully.');
-                return redirect()->route('user-dashboard');
+                return redirect()->route('dashboard');
             } else {
                 $request->session()->flash('session_error', 'Your username and password are wrong. Please login with correct credential...!!');
                 return redirect()->route('login');
