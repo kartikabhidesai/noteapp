@@ -28,3 +28,12 @@ $userPrefix = "";
 Route::group(['prefix' => $userPrefix, 'middleware' => ['auth']], function() {
 Route::match(['get', 'post'], 'dashboard', ['as' => 'dashboard', 'uses' => 'UserController@dashboard']);
 });
+
+//Note
+Route::match(['get', 'post'], 'note', ['as' => 'note', 'uses' => 'note\NoteController@index']);
+
+//Note
+Route::match(['get', 'post'], 'file', ['as' => 'file', 'uses' => 'file\FileController@index']);
+
+//Note
+Route::match(['get', 'post'], 'imagedraw', ['as' => 'imagedraw', 'uses' => 'imagedraw\ImagedrawController@index']);

@@ -6,7 +6,7 @@
         @php
         $session = Session::all();
         @endphp
-        <input type="hidden" id="loginusertype" value="{{ $session['logindata'][0]['name'] }}">
+        <input type="hidden" id="loginusertype" value="">
         
         @include('layouts.include.breadcrumb')
         @include('layouts.include.message')

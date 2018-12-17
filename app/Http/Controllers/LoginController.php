@@ -101,5 +101,6 @@ class LoginController extends Controller {
         $data['funinit'] = array('Customer.registerInit()');
         return view('auth.register', $data);
     }
-
+        
+    
 }
