@@ -9,7 +9,12 @@
                         <div class="c-table-responsive@wide">
                             <table class="c-table">
                                 <caption class="c-table__title">
-                                    Files List
+                                   <div class="c-card__header c-card__header--transparent o-line">
+                                       <h4 class="c-card__title"><b>File List</b></h4>
+                                        <div class="c-card__meta">
+                                            <a href="{{ route("add-file")}}"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
                                 </caption>
                                 <thead class="c-table__head c-table__head--slim">
                                     <tr class="c-table__row">

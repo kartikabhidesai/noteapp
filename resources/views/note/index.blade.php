@@ -7,9 +7,15 @@
                 <div class="row u-mb-large">
                     <div class="col-md-12">
                         <div class="c-table-responsive@wide">
+                            
                             <table class="c-table">
                                 <caption class="c-table__title">
-                                    Note List
+                                   <div class="c-card__header c-card__header--transparent o-line">
+                                       <h4 class="c-card__title"><b>Note List</b></h4>
+                                        <div class="c-card__meta">
+                                            <a href="{{ route("add-note")}}"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
                                 </caption>
                                 <thead class="c-table__head c-table__head--slim">
                                     <tr class="c-table__row">
@@ -33,9 +39,9 @@
                                                 <button class="c-btn c-btn--secondary has-dropdown dropdown-toggle" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
                                                 
                                                 <div class="c-dropdown__menu dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                                    <a class="c-dropdown__item dropdown-item" href="#">Edit</a>
-                                                    <a class="c-dropdown__item dropdown-item" href="#">Delete</a>
-                                                    <a class="c-dropdown__item dropdown-item" href="#">View</a>
+                                                    <a class="c-dropdown__item dropdown-item" href="{{ route("edit-note") }}">Edit</a>
+                                                    <a class="c-dropdown__item dropdown-item" href="{{ route("view-note") }}">View</a>
+                                                    <a class="c-dropdown__item dropdown-item" href="{{ route("delete-note") }}">Delete</a>
                                                 </div>
                                             </div>
                                         </td>

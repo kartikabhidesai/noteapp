@@ -15,7 +15,7 @@ $currentRoute = Route::current()->getName();
             </li>
             
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'note' ? 'is-active' : '') }}" href="{{ route('note') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'view-note' ||  $currentRoute == 'edit-note' || $currentRoute == 'add-note' || $currentRoute == 'note' ? 'is-active' : '') }}" href="{{ route('note') }}">
                     <i class="fa fa-pencil-square-o u-mr-xsmall"></i>Note
                 </a>
             </li>
