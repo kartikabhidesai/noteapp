@@ -2,8 +2,6 @@
 @section('content')
 @include('layouts.include.body_header')
  <div class="container">
-               
-
                 <div class="row u-mb-large">
                     <div class="col-md-12">
                         <div class="c-table-responsive@wide">
@@ -37,9 +35,10 @@
                                                 <button class="c-btn c-btn--secondary has-dropdown dropdown-toggle" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
                                                 
                                                 <div class="c-dropdown__menu dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                                    <a class="c-dropdown__item dropdown-item" href="#">Edit</a>
-                                                    <a class="c-dropdown__item dropdown-item" href="#">Delete</a>
-                                                    <a class="c-dropdown__item dropdown-item" href="#">View</a>
+                                                    <a class="c-dropdown__item dropdown-item" href="{{ route('edit-file')}}">Edit</a>
+                                                    <a class="c-dropdown__item dropdown-item" href="{{ route('download-file')}}">Download</a>
+                                                    <a class="c-dropdown__item dropdown-item" href="{{ route('delete-file')}}">Delete</a>
+                                                    
                                                 </div>
                                             </div>
                                         </td>

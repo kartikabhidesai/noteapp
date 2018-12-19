@@ -28,6 +28,9 @@
 @endforeach
 @endif
 <script>
+			CKEDITOR.replace( 'noteDescription' );
+</script>
+<script>
     jQuery(document).ready(function() {
 
         @if (!empty($funinit))

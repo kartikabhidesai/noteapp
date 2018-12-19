@@ -21,7 +21,7 @@ $currentRoute = Route::current()->getName();
             </li>
             
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'file' ? 'is-active' : '') }}" href="{{ route('file') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'edit-file' || $currentRoute == 'add-file' || $currentRoute == 'file' ? 'is-active' : '') }}" href="{{ route('file') }}">
                     <i class="fa fa-clone u-mr-xsmall"></i>File Upload
                 </a>
             </li>

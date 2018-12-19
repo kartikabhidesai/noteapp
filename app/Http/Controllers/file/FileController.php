@@ -19,4 +19,35 @@ class FileController extends Controller {
         return view('file.index', $data);
     }
     
+    
+    public function addfile() {
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array();
+        $data['css'] = array('');
+        $data['js'] = array('file/file.js');
+        $data['funinit'] = array('File.Init()');
+
+        return view('file.addfile', $data);
+    }
+    
+    public function editfile() {
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array();
+        $data['css'] = array('');
+        $data['js'] = array('file/file.js');
+        $data['funinit'] = array('File.Init()');
+
+        return view('file.editfile', $data);
+    }
+    
+    
+    
+    public function downloadfile() {
+        
+    }
+    
+    public function deletefile() {
+    }
+    
+    
 }

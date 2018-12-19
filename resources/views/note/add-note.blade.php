@@ -27,12 +27,13 @@
                         </div>
                         
                         
+                       
+                        
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="noteDescription">Note Description</label> 
-                                    <input class="c-input" name="noteDescription" id="noteDescription" placeholder="Enter Note Description" type="text">
-                                    <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+                                    <textarea name="noteDescription"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -53,4 +54,5 @@
         border-color: red;
     }
 </style>
+
 @endsection

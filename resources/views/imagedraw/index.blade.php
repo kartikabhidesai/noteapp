@@ -2,8 +2,6 @@
 @section('content')
 @include('layouts.include.body_header')
  <div class="container">
-               
-
                 <div class="row u-mb-large">
                     <div class="col-md-12">
                         <div class="c-table-responsive@wide">
@@ -16,7 +14,6 @@
                                         <th class="c-table__cell c-table__cell--head">No.</th>
                                         <th class="c-table__cell c-table__cell--head">Image</th>
                                         <th class="c-table__cell c-table__cell--head">Action</th>
-                                        
                                         
                                     </tr>
                                 </thead>
@@ -42,7 +39,7 @@
                                     </tr>
                                     
                                     <tr class="c-table__row">
-                                        <td class="c-table__cell"><span class="u-text-mute">1</span></td>
+                                        <td class="c-table__cell"><span class="u-text-mute">2</span></td>
                                         <td class="c-table__cell">Design Works</td>
                                         
                                         
@@ -61,7 +58,7 @@
                                     </tr>
                                     
                                     <tr class="c-table__row">
-                                        <td class="c-table__cell"><span class="u-text-mute">1</span></td>
+                                        <td class="c-table__cell"><span class="u-text-mute">3</span></td>
                                         <td class="c-table__cell">Design Works</td>
                                         
                                         
@@ -81,7 +78,7 @@
                                     
                                     
                                     <tr class="c-table__row">
-                                        <td class="c-table__cell"><span class="u-text-mute">1</span></td>
+                                        <td class="c-table__cell"><span class="u-text-mute">4</span></td>
                                         <td class="c-table__cell">Design Works</td>
                                         
                                         

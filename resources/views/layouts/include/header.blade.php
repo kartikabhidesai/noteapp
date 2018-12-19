@@ -29,6 +29,7 @@
     @endif
     @endforeach
     @endif
+    <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
     <script>
 var baseurl = "{{ asset('/') }}";
     </script>

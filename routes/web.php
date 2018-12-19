@@ -38,9 +38,10 @@ Route::match(['get', 'post'], 'delete-note', ['as' => 'delete-note', 'uses' => '
 
 //File
 Route::match(['get', 'post'], 'file', ['as' => 'file', 'uses' => 'file\FileController@index']);
-Route::match(['get', 'post'], 'add-file', ['as' => 'add-file', 'uses' => 'note\NoteController@addfile']);
-Route::match(['get', 'post'], 'edit-file', ['as' => 'edit-file', 'uses' => 'note\NoteController@editfile']);
-Route::match(['get', 'post'], 'delete-file', ['as' => 'delete-file', 'uses' => 'note\NoteController@deletefile']);
+Route::match(['get', 'post'], 'add-file', ['as' => 'add-file', 'uses' => 'file\FileController@addfile']);
+Route::match(['get', 'post'], 'edit-file', ['as' => 'edit-file', 'uses' => 'file\FileController@editfile']);
+Route::match(['get', 'post'], 'delete-file', ['as' => 'delete-file', 'uses' => 'file\FileController@deletefile']);
+Route::match(['get', 'post'], 'download-file', ['as' => 'download-file', 'uses' => 'file\FileController@downloadfile']);
 
 //Image
 Route::match(['get', 'post'], 'imagedraw', ['as' => 'imagedraw', 'uses' => 'imagedraw\ImagedrawController@index']);
