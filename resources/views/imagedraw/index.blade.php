@@ -13,8 +13,10 @@
                                     <tr class="c-table__row">
                                         <th class="c-table__cell c-table__cell--head">No.</th>
                                         <th class="c-table__cell c-table__cell--head">Image</th>
+                                         <th class="c-table__cell c-table__cell--head">Date/Time</th>
+                                        <th class="c-table__cell c-table__cell--head">IP Address</th>
                                         <th class="c-table__cell c-table__cell--head">Action</th>
-                                        
+                                         
                                     </tr>
                                 </thead>
 
@@ -22,7 +24,8 @@
                                     <tr class="c-table__row">
                                         <td class="c-table__cell"><span class="u-text-mute">1</span></td>
                                         <td class="c-table__cell">Design Works</td>
-                                        
+                                        <td class="c-table__cell">28-12-2017 10:00:52</td>
+                                        <td class="c-table__cell">127.0.0.0</td>
                                         
                                         <td class="c-table__cell">
                                             <div class="c-dropdown dropdown">
@@ -41,7 +44,8 @@
                                     <tr class="c-table__row">
                                         <td class="c-table__cell"><span class="u-text-mute">2</span></td>
                                         <td class="c-table__cell">Design Works</td>
-                                        
+                                        <td class="c-table__cell">28-12-2017 10:00:52</td>
+                                        <td class="c-table__cell">127.0.0.0</td>
                                         
                                         <td class="c-table__cell">
                                             <div class="c-dropdown dropdown">
@@ -60,7 +64,8 @@
                                     <tr class="c-table__row">
                                         <td class="c-table__cell"><span class="u-text-mute">3</span></td>
                                         <td class="c-table__cell">Design Works</td>
-                                        
+                                        <td class="c-table__cell">28-12-2017 10:00:52</td>
+                                        <td class="c-table__cell">127.0.0.0</td>
                                         
                                         <td class="c-table__cell">
                                             <div class="c-dropdown dropdown">
@@ -80,7 +85,8 @@
                                     <tr class="c-table__row">
                                         <td class="c-table__cell"><span class="u-text-mute">4</span></td>
                                         <td class="c-table__cell">Design Works</td>
-                                        
+                                        <td class="c-table__cell">28-12-2017 10:00:52</td>
+                                        <td class="c-table__cell">127.0.0.0</td>
                                         
                                         <td class="c-table__cell">
                                             <div class="c-dropdown dropdown">

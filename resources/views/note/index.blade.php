@@ -22,6 +22,8 @@
                                         <th class="c-table__cell c-table__cell--head">No.</th>
                                         <th class="c-table__cell c-table__cell--head">Title</th>
                                         <th class="c-table__cell c-table__cell--head">Description</th>
+                                        <th class="c-table__cell c-table__cell--head">Date/Time</th>
+                                        <th class="c-table__cell c-table__cell--head">IP Address</th>
                                         <th class="c-table__cell c-table__cell--head">Action</th>
                                         
                                         
@@ -33,6 +35,8 @@
                                         <td class="c-table__cell"><span class="u-text-mute">1</span></td>
                                         <td class="c-table__cell">Design Works</td>
                                         <td class="c-table__cell">Carlson LimitedCarlson Limited</td>
+                                        <td class="c-table__cell">28-12-2017 10:00:52</td>
+                                        <td class="c-table__cell">127.0.0.0</td>
                                         
                                         <td class="c-table__cell">
                                             <div class="c-dropdown dropdown">
@@ -52,7 +56,8 @@
                                         <td class="c-table__cell"><span class="u-text-mute">2</span></td>
                                         <td class="c-table__cell">Design Works</td>
                                         <td class="c-table__cell">Carlson LimitedCarlson Limited</td>
-                                        
+                                        <td class="c-table__cell">28-12-2017 10:00:52</td>
+                                        <td class="c-table__cell">127.0.0.0</td>
                                         <td class="c-table__cell">
                                             <div class="c-dropdown dropdown">
                                                 <button class="c-btn c-btn--secondary has-dropdown dropdown-toggle" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
@@ -71,7 +76,8 @@
                                         <td class="c-table__cell"><span class="u-text-mute">3</span></td>
                                         <td class="c-table__cell">Design Works</td>
                                         <td class="c-table__cell">Carlson LimitedCarlson Limited</td>
-                                        
+                                        <td class="c-table__cell">28-12-2017 10:00:52</td>
+                                        <td class="c-table__cell">127.0.0.0</td>
                                         <td class="c-table__cell">
                                             <div class="c-dropdown dropdown">
                                                 <button class="c-btn c-btn--secondary has-dropdown dropdown-toggle" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
@@ -91,7 +97,8 @@
                                         <td class="c-table__cell"><span class="u-text-mute">4</span></td>
                                         <td class="c-table__cell">Design Works</td>
                                         <td class="c-table__cell">Carlson LimitedCarlson Limited</td>
-                                        
+                                        <td class="c-table__cell">28-12-2017 10:00:52</td>
+                                        <td class="c-table__cell">127.0.0.0</td>
                                         <td class="c-table__cell">
                                             <div class="c-dropdown dropdown">
                                                 <button class="c-btn c-btn--secondary has-dropdown dropdown-toggle" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
