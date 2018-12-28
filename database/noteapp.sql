@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2018 at 04:30 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.11
+-- Generation Time: Dec 28, 2018 at 01:40 PM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.1.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,33 +25,88 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `file`
+--
+
+CREATE TABLE `file` (
+  `id` int(11) NOT NULL,
+  `file_title` varchar(255) NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `ip_address` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `file`
+--
+
+INSERT INTO `file` (`id`, `file_title`, `file_name`, `ip_address`, `created_at`, `updated_at`) VALUES
+(3, 'Hello', '1545999649.jpg', '::1', '2018-12-28 06:50:49', '2018-12-28 06:50:49');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `note`
+--
+
+CREATE TABLE `note` (
+  `id` int(11) NOT NULL,
+  `note_titile` text NOT NULL,
+  `note_description` text NOT NULL,
+  `ip_address` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `note`
+--
+
+INSERT INTO `note` (`id`, `note_titile`, `note_description`, `ip_address`, `created_at`, `updated_at`) VALUES
+(7, 'CXCXZCZXC', '<p>CXZCZXCC</p>\r\n\r\n<p>XZCZXC</p>\r\n\r\n<p>CXZCZX</p>\r\n\r\n<p>s</p>\r\n\r\n<p>czxczx</p>\r\n\r\n<p>&nbsp;</p>', '::1', '2018-12-27 08:59:06', '2018-12-27 08:59:06'),
+(8, 'CXCXZCZXC', '<p>CXZCZXCC</p>\r\n\r\n<p>XZCZXC</p>\r\n\r\n<p>CXZCZX</p>\r\n\r\n<p>s</p>\r\n\r\n<p>czxczx</p>\r\n\r\n<p>&nbsp;</p>', '::1', '2018-12-27 08:59:07', '2018-12-27 08:59:07'),
+(9, 'vcgcv', '<p>vcvxcvx</p>', '::1', '2018-12-27 09:19:27', '2018-12-27 09:19:27'),
+(16, 'Hello', '<p>asdzfxgchjkl;&#39;;sdfghgjfghfgbvbcvbc</p>', '::1', '2018-12-28 07:03:38', '2018-12-28 07:03:38');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_image` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `user_image`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin admin', '', 'admin@admin.com', '$2y$12$SVnRH9z4fFbwGVAslC0umeId8nm6GeG2sitYuYn.cSAJ2REvv3z8G', '', 'XttLEj1fZE9GA7yyGpxmvDdXpwOO1rUkNm11YMors6n9dlhF8ollcJY9Ub30', '2018-08-04 07:30:00', '2018-12-13 05:48:03'),
-(2, 'shailesh', 'test', 'b.ak@officepark.group', '$2y$10$P/k9.uEOzuIgcEzoNAubL.nTs9gttJS7.vG6Sdkey327uoQscMmhC', NULL, NULL, '2018-12-15 09:59:32', '2018-12-15 09:59:32'),
-(3, 'shailesh', 'ddfdsfds', 'kartikdesai1234@gmail.com', '$2y$10$kJxciAsp7FQLZznpKFSMmebwNacxr6fsdfu5WLZFRpX3ea0.R5dQu', NULL, NULL, '2018-12-15 09:59:58', '2018-12-15 09:59:58');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `created_at`, `updated_at`) VALUES
+(1, 'Parth', 'KHunt', 'parthkhunt12@gmail.com', '$2y$10$En8R48Cea6tnxQoBZAMTaecZzP7lLM4sxwcbv6ZBH6vZchfj6Ke7a', '2018-12-27 14:24:25', '2018-12-27 08:52:44');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `file`
+--
+ALTER TABLE `file`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `note`
+--
+ALTER TABLE `note`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -64,10 +119,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `file`
+--
+ALTER TABLE `file`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `note`
+--
+ALTER TABLE `note`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
