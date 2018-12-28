@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\file;
 use App\Http\Controllers\Controller;
+use File;
+use Illuminate\Http\Request;
+use Validator;
+use Illuminate\Support\Facades\Response;
+use App\Model\Files;
 
 class FileController extends Controller {
     
@@ -10,6 +15,9 @@ class FileController extends Controller {
     }
 
     public function index() {
+       
+        $objFileList= new Files();
+        $data['filelist']= $objFileList->filelist();
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array('');
@@ -20,33 +28,84 @@ class FileController extends Controller {
     }
     
     
-    public function addfile() {
+    public function addfile(Request $request) {
+        
+        if ($request->isMethod('post')) {
+            
+          $objAddFile = new Files();
+          $addFile = $objAddFile->addFile($request);
+            if ($addFile) {
+                $return['status'] = 'success';
+                $return['message'] = 'File uploaded successfully.';
+                $return['redirect'] = route('file');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array('');
         $data['js'] = array('file/file.js');
-        $data['funinit'] = array('File.Init()');
+        $data['funinit'] = array('File.Add()');
 
         return view('file.addfile', $data);
     }
     
-    public function editfile() {
+    public function editfile(Request $request,$id=NULL) {
+        if ($request->isMethod('post')) {
+            
+          $objAddFile = new Files();
+          $addFile = $objAddFile->editFile($request);
+            if ($addFile) {
+                $return['status'] = 'success';
+                $return['message'] = 'File uploaded successfully.';
+                $return['redirect'] = route('file');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+        $objFileList= new File();
+        $data['filedetails']= $objFileList->filelist($id);
+        
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array('');
         $data['js'] = array('file/file.js');
-        $data['funinit'] = array('File.Init()');
+        $data['funinit'] = array('File.edit()');
 
         return view('file.editfile', $data);
     }
     
     
     
-    public function downloadfile() {
-        
+    public function downloadfile($file) {
+        $filepath=  base_path().'/public/uploads/file/'.$file;
+        return Response::download($filepath);
     }
     
-    public function deletefile() {
+    public function deletefile(Request $request) {
+        if ($request->isMethod('post')) {
+            $objFileDelete= new Files();
+            $FileDelete= $objFileDelete->fileDelete($request);
+            if ($FileDelete) {
+                $return['status'] = 'success';
+                $return['message'] = 'File delete successfully.';
+                $return['redirect'] = route('file');
+                echo json_encode($return);
+                exit;
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'Something went wrong.';
+                echo json_encode($return);
+                exit;
+            }
+        }
     }
     
     

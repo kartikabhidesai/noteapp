@@ -16,37 +16,32 @@
                     </div>
                     
                 </div>
-                    <div class="c-stage__panel u-p-medium">       
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="c-field u-mb-small">
-                                    <label class="c-field__label" for="noteTitle">File Title</label> 
-                                    <input class="c-input" name="noteTitle" id="noteTitle" placeholder="Enter Note Title" type="text">
-                                    <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+                    <div class="c-stage__panel u-p-medium">      
+                        <form action="{{ route('add-file') }}" method="post" enctype="multipart/form-data" id="addfile" >
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="c-field u-mb-small">
+                                        <label class="c-field__label" for="noteTitle">File Title</label> 
+                                        <input class="c-input" name="filetitle" id="filetitle" placeholder="Enter File Title" type="text">
+                                        <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         
-                        <div class="row">
-                            <div class="col-12">
-                                <form action="/file-upload" class="dropzone" id="custom-dropzone" style="height: 180px;">
-                                    <div class="dz-message" data-dz-message>
-                                        <i class="dz-icon fa fa-cloud-upload"></i>
-                                        <span>Drag a file here or browse for a file to upload.</span>
-                                    </div>
-
-                                    <div class="fallback">
-                                        <input name="file" type="file" multiple>
-                                    </div>
-                                </form>
+                            <div class="row">
+                                <div class="col-12 ">
+                                    <label class="c-field__label" for="noteTitle">Upload File</label> 
+                                    <input name="fileupload" id="fileupload" type="file" >
+                                </div>
                             </div>
-                         </div><br>
+                            <br>
                          
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <input class="c-btn c-btn--info c-btn--fullwidth" value="Add Note" type="submit">
+                            <div class="row">
+                                <div class="col-3">
+                                    <input class="c-btn c-btn--info c-btn--fullwidth" value="Add File" type="submit">
+                                </div>
                             </div>
-                        </div>
+                       </form>
                     </div>
                     
             </article>

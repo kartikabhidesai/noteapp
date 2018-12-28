@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\note;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Http\Request;
+use Validator;
+use App\Model\Note;
 class NoteController extends Controller {
     
     public function __construct() {
@@ -10,6 +12,8 @@ class NoteController extends Controller {
     }
 
     public function index() {
+        $objAddNote = new Note();
+        $data['notelist'] = $objAddNote->notelist();
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array('');
@@ -19,7 +23,21 @@ class NoteController extends Controller {
         return view('note.index', $data);
     }
     
-    public function addnote(){
+    public function addnote(Request $request){
+        if ($request->isMethod('post')) {
+          $objAddNote = new Note();
+          $addNote = $objAddNote->addNote($request);
+            if ($addNote) {
+                $return['status'] = 'success';
+                $return['message'] = 'Note created successfully.';
+                $return['redirect'] = route('note');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array();
@@ -30,7 +48,23 @@ class NoteController extends Controller {
     }
     
     
-    public function editnote(){
+    public function editnote(Request $request,$id=NULL){
+        $objAddNote = new Note();
+        $data['note'] = $objAddNote->notelist($id);
+        if ($request->isMethod('post')) {
+          $objAddNote = new Note();
+          $addNote = $objAddNote->editNote($request);
+            if ($addNote) {
+                $return['status'] = 'success';
+                $return['message'] = 'Note Edited successfully.';
+                $return['redirect'] = route('note');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array();
@@ -42,7 +76,9 @@ class NoteController extends Controller {
     
     
     
-    public function viewnote(){
+    public function viewnote($id){
+        $objAddNote = new Note();
+        $data['note'] = $objAddNote->notelist($id);
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array();
@@ -52,8 +88,23 @@ class NoteController extends Controller {
         return view('note.view-note', $data);
     }
     
-    public function deletenote(){
-        
+    public function deletenote(Request $request){
+       if ($request->isMethod('post')) {
+            $objAddNote = new Note();
+            $deletenote = $objAddNote->deletenote($request);
+            if ($deletenote) {
+                $return['status'] = 'success';
+                $return['message'] = 'Note delete successfully.';
+                $return['redirect'] = route('note');
+                echo json_encode($return);
+                exit;
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'Something went wrong.';
+                echo json_encode($return);
+                exit;
+            }
+        }
     }
     
 }

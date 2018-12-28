@@ -2,6 +2,7 @@
 @section('content')
 @include('layouts.include.body_header')
  <div class="container">
+     
     <div class="row u-mb-large">
         <div class="col-12">
             <article class="c-stage">
@@ -13,7 +14,7 @@
                         <h6 class="u-mb-zero">Add Note</h6>
                     </div>
                 </div>
-                <form name="add-addressbook" id="addAddressbook" action="{{ route('add-note') }}" method="post">
+                <form name="addnote" id="addnote" action="{{ route('add-note') }}" method="post">
                     <div class="c-stage__panel u-p-medium">
                         
                         <div class="row">
@@ -33,6 +34,7 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="noteDescription">Note Description</label> 
+                                    
                                     <textarea name="noteDescription"></textarea>
                                 </div>
                             </div>

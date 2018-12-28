@@ -13,14 +13,14 @@
                         <h6 class="u-mb-zero">View Note</h6>
                     </div>
                 </div>
-                <form name="add-addressbook" id="addAddressbook" action="{{ route('add-note') }}" method="post">
+               
                     <div class="c-stage__panel u-p-medium">
                         
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="noteTitle">Note Title</label> 
-                                    <input class="c-input" name="noteTitle" id="noteTitle" placeholder="Enter Note Title" type="text">
+                                    <input class="c-input" name="noteTitle" id="noteTitle" placeholder="Enter Note Title" value="{{ $note['0']['id'] }}" type="text" disabled>
                                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                                 </div>
                             </div>
@@ -31,19 +31,14 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="noteDescription">Note Description</label> 
-                                    <input class="c-input" name="noteDescription" id="noteDescription" placeholder="Enter Note Description" type="text">
-                                    <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+                                    <textarea name="noteDescription" disabled>{{ $note['0']['note_description'] }}</textarea>
+                                    
                                 </div>
                             </div>
                         </div>
                    
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <input class="c-btn c-btn--info c-btn--fullwidth" value="Add Note" type="submit">
-                            </div>
-                        </div>
                     </div>
-                </form>
+                
             </article>
         </div>
     </div>

@@ -31,6 +31,12 @@
 			CKEDITOR.replace( 'noteDescription' );
 </script>
 <script>
+    for (var i in CKEDITOR.instances) {
+                
+                CKEDITOR.instances[i].on('change', function() { CKEDITOR.instances[i].updateElement() });
+                
+        }
+        
     jQuery(document).ready(function() {
 
         @if (!empty($funinit))

@@ -5,7 +5,7 @@
                 <div class="row u-mb-large">
                     <div class="col-md-12">
                         <div class="c-table-responsive@wide">
-                            <table class="c-table">
+                            <table class="c-table" id="datatable">
                                 <caption class="c-table__title">
                                    <div class="c-card__header c-card__header--transparent o-line">
                                        <h4 class="c-card__title"><b>File List</b></h4>
@@ -16,7 +16,7 @@
                                 </caption>
                                 <thead class="c-table__head c-table__head--slim">
                                     <tr class="c-table__row">
-                                        <th class="c-table__cell c-table__cell--head">No.</th>
+                                        <th class="c-table__cell c-table__cell--head">No</th>
                                         <th class="c-table__cell c-table__cell--head">File Name</th>
                                         
                                         <th class="c-table__cell c-table__cell--head">Date/Time</th>
@@ -26,91 +26,35 @@
                                 </thead>
 
                                 <tbody>
-                                    <tr class="c-table__row">
-                                        <td class="c-table__cell"><span class="u-text-mute">1</span></td>
-                                        <td class="c-table__cell">Design Works</td>
-                                        <td class="c-table__cell">28-12-2017 10:00:52</td>
-                                        <td class="c-table__cell">127.0.0.0</td>
+                                    @if(count($filelist) > 0)
+                                    @for($i=0; $i < count($filelist); $i++)
+                                        <tr class="c-table__row">
+                                        <td class="c-table__cell"><span class="u-text-mute">{{ $i+1 }}</span></td>
+                                        <td class="c-table__cell">{{ $filelist[$i]['file_title']}}</td>
+                                        <td class="c-table__cell">{{ $filelist[$i]['created_at']}}</td>
+                                        <td class="c-table__cell">{{ $filelist[$i]['ip_address']}}</td>
                                         
                                         <td class="c-table__cell">
                                             <div class="c-dropdown dropdown">
                                                 <button class="c-btn c-btn--secondary has-dropdown dropdown-toggle" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
                                                 
                                                 <div class="c-dropdown__menu dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                                    <a class="c-dropdown__item dropdown-item" href="{{ route('edit-file')}}">Edit</a>
-                                                    <a class="c-dropdown__item dropdown-item" href="{{ route('download-file')}}">Download</a>
-                                                    <a class="c-dropdown__item dropdown-item" href="{{ route('delete-file')}}">Delete</a>
-                                                    
+                                                    <a class="c-dropdown__item dropdown-item" href="{{ route('edit-file',$filelist[$i]['id'])}}">Edit</a>
+                                                    <a class="c-dropdown__item dropdown-item" href="{{ route('download-file',$filelist[$i]['file_name'])}}">Download</a>
+                                                    <a class="c-dropdown__item dropdown-item deletenote" data-image="{{ $filelist[$i]['file_name']}}" data-toggle="modal" data-target="#deleteModel" data-token="{{ csrf_token() }}"  data-id="{{ $filelist[$i]['id'] }}">
+                                                            Delete
+                                                        </a>
                                                 </div>
                                             </div>
                                         </td>
                                         
                                     </tr>
-                                    
+                                    @endfor
+                                    @else
                                     <tr class="c-table__row">
-                                        <td class="c-table__cell"><span class="u-text-mute">2</span></td>
-                                        <td class="c-table__cell">Design Works</td>
-                                        <td class="c-table__cell">28-12-2017 10:00:52</td>
-                                        <td class="c-table__cell">127.0.0.0</td>
-                                        
-                                        <td class="c-table__cell">
-                                            <div class="c-dropdown dropdown">
-                                                <button class="c-btn c-btn--secondary has-dropdown dropdown-toggle" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
-                                                
-                                                <div class="c-dropdown__menu dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                                    <a class="c-dropdown__item dropdown-item" href="#">Edit</a>
-                                                    <a class="c-dropdown__item dropdown-item" href="#">Delete</a>
-                                                    <a class="c-dropdown__item dropdown-item" href="#">View</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        
+                                        <td class="c-table__cell" colspan="5" style="color:red">Note Data Found</td>
                                     </tr>
-                                    
-                                    <tr class="c-table__row">
-                                        <td class="c-table__cell"><span class="u-text-mute">3</span></td>
-                                        <td class="c-table__cell">Design Works</td>
-                                        <td class="c-table__cell">28-12-2017 10:00:52</td>
-                                        <td class="c-table__cell">127.0.0.0</td>
-                                        
-                                        <td class="c-table__cell">
-                                            <div class="c-dropdown dropdown">
-                                                <button class="c-btn c-btn--secondary has-dropdown dropdown-toggle" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
-                                                
-                                                <div class="c-dropdown__menu dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                                    <a class="c-dropdown__item dropdown-item" href="#">Edit</a>
-                                                    <a class="c-dropdown__item dropdown-item" href="#">Delete</a>
-                                                    <a class="c-dropdown__item dropdown-item" href="#">View</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        
-                                    </tr>
-                                    
-                                    
-                                    <tr class="c-table__row">
-                                        <td class="c-table__cell"><span class="u-text-mute">4</span></td>
-                                        <td class="c-table__cell">Design Works</td>
-                                       <td class="c-table__cell">28-12-2017 10:00:52</td>
-                                        <td class="c-table__cell">127.0.0.0</td>
-                                        
-                                        <td class="c-table__cell">
-                                            <div class="c-dropdown dropdown">
-                                                <button class="c-btn c-btn--secondary has-dropdown dropdown-toggle" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
-                                                
-                                                <div class="c-dropdown__menu dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                                    <a class="c-dropdown__item dropdown-item" href="#">Edit</a>
-                                                    <a class="c-dropdown__item dropdown-item" href="#">Delete</a>
-                                                    <a class="c-dropdown__item dropdown-item" href="#">View</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        
-                                    </tr>
-
-                                    
-
-                               
+                                    @endif
                                 </tbody>
                             </table>
                         </div><!-- // .c-card -->
