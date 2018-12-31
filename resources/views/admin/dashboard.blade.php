@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('content')
 @include('layouts.include.body_header')
 <div class="container">
@@ -63,5 +63,5 @@
         color: red !important;
         border-color: red !important;
     }
-</style>
+</style> 
 @endsection

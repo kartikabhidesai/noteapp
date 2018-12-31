@@ -24,10 +24,10 @@ var File=function(){
     };
     
     var fileadd=function(){
-       var form = $('#add-file');
+       var form = $('#addfile');
         var rules = {
-//            filetitle: {required: true},
-//            fileupload: {required: true},
+            filetitle: {required: true},
+            fileupload: {required: true},
         };
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);
@@ -35,10 +35,10 @@ var File=function(){
 
     };
     var editadd=function(){
-       var form = $('#edit-file');
+       var form = $('#editfile');
         var rules = {
-//            filetitle: {required: true},
-//            fileupload: {required: true},
+            filetitle: {required: true},
+            fileupload: {required: true},
         };
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form);

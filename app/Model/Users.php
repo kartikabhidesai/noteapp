@@ -53,6 +53,48 @@ class Users extends Model {
                         ->leftjoin('order_info', 'users.id', '=', 'order_info.user_id')
                         ->where('users.type', '=', $type)->get();
     }
-
+    
+    public function userlist($id=null){
+        if($id){
+            return Users::select('id','first_name','last_name','email','status','role_type')
+                        ->where('id', '=',$id)->get()->toarray();
+        }else{
+        return Users::select('id','first_name','last_name','email','status')
+                        ->where('role_type', '=','1')->get()->toarray();
+        }
+    }   
+    
+    
+    public function deactiveUser($id){
+        $objUser = Users::find($id);
+        $objUser->status = '1';
+        $objUser->updated_at = date('Y-m-d H:i:s');
+        $objUser->save();
+        return TRUE;
+    }
+    
+    public function activeUser($id){
+        $objUser = Users::find($id);
+        $objUser->status = '0';
+        $objUser->updated_at = date('Y-m-d H:i:s');
+        $objUser->save();
+        return TRUE;
+    }
+    
+    public function deleteuser($id){
+         return Users::where('id', $id)->delete();
+    }
+    
+    public function edituserdetails($request,$id){
+        
+        $objUser = Users::find($id);
+        $objUser->first_name = $request->input('first_name');
+        $objUser->last_name = $request->input('lastname');
+        $objUser->email	 = $request->input('email');
+        $objUser->role_type = $request->input('role_type');
+        $objUser->updated_at = date('Y-m-d H:i:s');
+        $objUser->save();
+        return TRUE;
+    }
    
 }
