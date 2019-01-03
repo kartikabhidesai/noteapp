@@ -30,7 +30,7 @@ var File=function(){
             fileupload: {required: true},
         };
         handleFormValidate(form, rules, function(form) {
-            handleAjaxFormSubmit(form);
+            handleAjaxFormSubmit(form,true);
         }); 
 
     };
@@ -41,7 +41,7 @@ var File=function(){
             fileupload: {required: true},
         };
         handleFormValidate(form, rules, function(form) {
-            handleAjaxFormSubmit(form);
+            handleAjaxFormSubmit(form,true);
         }); 
 
     };
