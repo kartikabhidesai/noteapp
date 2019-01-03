@@ -48,7 +48,7 @@ class LoginController extends Controller {
                 'password' => 'required'
             ]);
 
-            if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+            if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password'),'role_type'=>'1'])) {
                 $loginData = array(
                     'name' => Auth::guard('web')->user()->first_name,
                     'last_name' => Auth::guard('web')->user()->last_name,
@@ -59,6 +59,17 @@ class LoginController extends Controller {
                 Session::push('logindata', $loginData);
                 $request->session()->flash('session_success', 'User Login successfully.');
                 return redirect()->route('dashboard');
+            }else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'),'role_type'=>'0'])) {
+                $loginData = array(
+                    'name' => Auth::guard('admin')->user()->first_name,
+                    'last_name' => Auth::guard('admin')->user()->last_name,
+                    'email' => Auth::guard('admin')->user()->email,
+                    'user_image' => Auth::guard('admin')->user()->user_image,
+                    'id' => Auth::guard('admin')->user()->id
+                );
+                Session::push('logindata', $loginData);
+                $request->session()->flash('session_success', 'User Login successfully.');
+                return redirect()->route('admin-dashboard');
             } else {
                 $request->session()->flash('session_error', 'Your username and password are wrong. Please login with correct credential...!!');
                 return redirect()->route('login');
