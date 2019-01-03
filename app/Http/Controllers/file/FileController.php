@@ -70,7 +70,7 @@ class FileController extends Controller {
             echo json_encode($return);
             exit;
         }
-        $objFileList= new File();
+        $objFileList= new Files();
         $data['filedetails']= $objFileList->filelist($id);
         
         $data['plugincss'] = array();
