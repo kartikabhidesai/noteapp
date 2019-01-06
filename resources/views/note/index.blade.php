@@ -7,7 +7,7 @@
                          <div class="c-table-responsive@wide">
                              <table class="c-table" id="datatable">
                                 <caption class="c-table__title">
-                                   <div class="c-card__header c-card__header--transparent o-line">
+                                   <div class="c-card__header--transparent o-line">
                                        <h4 class="c-card__title"><b>Note List</b></h4>
                                         <div class="c-card__meta">
                                             <a href="{{ route("add-note")}}"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>

@@ -43,7 +43,10 @@ Route::match(['get', 'post'], 'delete-file', ['as' => 'delete-file', 'uses' => '
 Route::match(['get', 'post'], 'download-file/{id}', ['as' => 'download-file', 'uses' => 'file\FileController@downloadfile']);
 
 //Image
-Route::match(['get', 'post'], 'imagedraw', ['as' => 'imagedraw', 'uses' => 'imagedraw\ImagedrawController@index']);
+Route::match(['get', 'post'], 'imagedrawlist', ['as' => 'imagedrawlist', 'uses' => 'imagedraw\ImagedrawController@imagedrawlist']);
+Route::match(['get', 'post'], 'imagedraw', ['as' => 'imagedraw', 'uses' => 'imagedraw\ImagedrawController@imagedrawadd']);
+Route::match(['get', 'post'], 'savedrawimage', ['as' => 'savedrawimage', 'uses' => 'imagedraw\ImagedrawController@savedrawimage']);
+Route::match(['get', 'post'], 'deletedrawimage', ['as' => 'deletedrawimage', 'uses' => 'imagedraw\ImagedrawController@deletedrawimage']);
 
 });
 Route::match(['get', 'post'], 'userlist', ['as' => 'userlist', 'uses' => 'admin\UserController@index']);

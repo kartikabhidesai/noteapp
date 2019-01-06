@@ -8,9 +8,9 @@
                             <table class="c-table" id="datatable">
                                 <caption class="c-table__title">
                                    <div class="c-card__header--transparent o-line">
-                                       <h4 class="c-card__title"><b>File List</b></h4>
+                                       <h4 class="c-card__title"><b>Draw List</b></h4>
                                         <div class="c-card__meta">
-                                            <a href="{{ route("add-file")}}"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+                                            <a href="{{ route("imagedraw")}}"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </caption>
@@ -30,7 +30,7 @@
                                     @for($i=0; $i < count($filelist); $i++)
                                         <tr class="c-table__row">
                                         <td class="c-table__cell"><span class="u-text-mute">{{ $i+1 }}</span></td>
-                                        <td class="c-table__cell">{{ $filelist[$i]['file_title']}}</td>
+                                        <td class="c-table__cell">{{ $filelist[$i]['draw_name']}}</td>
                                         <td class="c-table__cell">{{ $filelist[$i]['created_at']}}</td>
                                         <td class="c-table__cell">{{ $filelist[$i]['ip_address']}}</td>
                                         
@@ -39,9 +39,8 @@
                                                 <button class="c-btn c-btn--secondary has-dropdown dropdown-toggle" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</button>
                                                 
                                                 <div class="c-dropdown__menu dropdown-menu" aria-labelledby="dropdownMenuButton10">
-                                                    <a class="c-dropdown__item dropdown-item" href="{{ route('edit-file',$filelist[$i]['id'])}}">Edit</a>
-                                                    <a class="c-dropdown__item dropdown-item" href="{{ route('download-file',$filelist[$i]['file_name'])}}">Download</a>
-                                                    <a class="c-dropdown__item dropdown-item deletenote" data-image="{{ $filelist[$i]['file_name']}}" data-toggle="modal" data-target="#deleteModel" data-token="{{ csrf_token() }}"  data-id="{{ $filelist[$i]['id'] }}">
+                                                    <a class="c-dropdown__item dropdown-item" href="{{ route('download-file',$filelist[$i]['filename'])}}">Download</a>
+                                                    <a class="c-dropdown__item dropdown-item deletenote" data-image="{{ $filelist[$i]['filename']}}" data-toggle="modal" data-target="#deleteModel" data-token="{{ csrf_token() }}"  data-id="{{ $filelist[$i]['id'] }}">
                                                             Delete
                                                         </a>
                                                 </div>
