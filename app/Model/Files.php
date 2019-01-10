@@ -21,11 +21,20 @@ class Files extends Model {
         return $result;
         }else{
          $result = Files::orderByRaw('created_at  DESC')
+                 
               ->get()->toarray();
         return $result;}
     }
     
-    public function addFile($request){
+    public function userfilelist($id){
+        $result = Files::orderByRaw('created_at  DESC')
+                ->where('user_id','=',$id)
+              ->get()->toarray();
+        return $result;
+    }
+
+
+    public function addFile($request,$id){
         
         $name = '';
         if($request->file()){
@@ -38,6 +47,7 @@ class Files extends Model {
         $ip = $_SERVER['REMOTE_ADDR'];
         $objadd = new Files();
         $objadd->file_name = $name;
+        $objadd->user_id =$id;
         $objadd->file_title = $request->input('filetitle');
         $objadd->ip_address = $ip;
         $result = $objadd->save();

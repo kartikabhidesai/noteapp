@@ -15,9 +15,9 @@ class FileController extends Controller {
     }
 
     public function index() {
-       
+        $data['detail'] = $this->loginUser;
         $objFileList= new Files();
-        $data['filelist']= $objFileList->filelist();
+        $data['filelist']= $objFileList->userfilelist($data['detail']['id']);
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array('');
@@ -29,11 +29,11 @@ class FileController extends Controller {
     
     
     public function addfile(Request $request) {
-        
+        $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
             
           $objAddFile = new Files();
-          $addFile = $objAddFile->addFile($request);
+          $addFile = $objAddFile->addFile($request,$data['detail']['id']);
             if ($addFile) {
                 $return['status'] = 'success';
                 $return['message'] = 'File uploaded successfully.';

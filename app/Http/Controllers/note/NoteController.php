@@ -12,8 +12,9 @@ class NoteController extends Controller {
     }
 
     public function index() {
+        $data['detail'] = $this->loginUser;
         $objAddNote = new Note();
-        $data['notelist'] = $objAddNote->notelist();
+        $data['notelist'] = $objAddNote->usernotelist($data['detail']['id']);
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array('');
@@ -24,9 +25,10 @@ class NoteController extends Controller {
     }
     
     public function addnote(Request $request){
+        $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
           $objAddNote = new Note();
-          $addNote = $objAddNote->addNote($request);
+          $addNote = $objAddNote->addNote($request,$data['detail']['id']);
             if ($addNote) {
                 $return['status'] = 'success';
                 $return['message'] = 'Note created successfully.';

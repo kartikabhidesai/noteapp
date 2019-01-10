@@ -24,8 +24,14 @@ class Draw extends Model {
               ->get()->toarray();
         return $result;}
     }
-    
-    public function addDraw($request){
+    public function userfilelist($id){
+         $result = Draw::orderByRaw('created_at  DESC')
+                 ->where('user_id',$id)
+                 ->get()->toarray();
+        return $result;
+    }
+
+        public function addDraw($request,$id){
         
         $name = '';
         if($request->file()){
@@ -37,6 +43,7 @@ class Draw extends Model {
         
         $ip = $_SERVER['REMOTE_ADDR'];
         $objadd = new Draw();
+        $objadd->user_id = $id;
         $objadd->draw_name = $request->input('filetitle');
         $objadd->filename = $name;
         $objadd->ip_address = $ip;

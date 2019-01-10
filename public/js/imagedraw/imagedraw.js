@@ -33,8 +33,9 @@ var Imagedraw = function () {
             },
             saveHandler: function (image, done) {
                 var formData = new FormData();
+                var filename=$('#noteTitle').val();
                 formData.append('fileupload', image.asBlob(), image.suggestedFileName());
-                formData.append('filetitle', 'sss');
+                formData.append('filetitle', filename);
                 // you can also pass suggested filename 
                 // formData.append('image', image.asBlob(), image.suggestedFileName());
                 var xhr = new XMLHttpRequest();

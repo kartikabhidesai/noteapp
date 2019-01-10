@@ -27,10 +27,18 @@ class Note extends Model {
         
         }
     }
+    public function usernotelist($id){
+        $result = note::orderByRaw('created_at  DESC')
+                ->where('user_id',$id)
+              ->get()->toarray();
+            return $result;
+    }
 
-        public function addNote($request){
+    public function addNote($request,$id){
+             
         $ip = $_SERVER['REMOTE_ADDR'];
         $objadd = new Note();
+        $objadd->user_id=$id;
         $objadd->note_titile = $request->input('noteTitle');
         $objadd->note_description = $request->input('noteDescription');
         $objadd->ip_address = $ip;

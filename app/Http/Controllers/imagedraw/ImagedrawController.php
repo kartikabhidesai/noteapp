@@ -12,8 +12,9 @@ class ImagedrawController extends Controller {
     }
 
     public function imagedrawlist() {
+        $data['detail'] = $this->loginUser;
         $objFileList= new Draw();
-        $data['filelist']= $objFileList->filelist();
+        $data['filelist']= $objFileList->userfilelist($data['detail']['id']);
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array('');
@@ -32,11 +33,11 @@ class ImagedrawController extends Controller {
         return view('imagedraw.imagedrawadd', $data);
     }
     public function savedrawimage(Request $request) {
-        
+        $data['detail'] = $this->loginUser;
         if ($request->isMethod('post')) {
             
           $objAddFile = new Draw();
-          $addFile = $objAddFile->addDraw($request);
+          $addFile = $objAddFile->addDraw($request,$data['detail']['id']);
             if ($addFile) {
                 $return['status'] = 'success';
                 $return['message'] = 'Drawing saved successfully.';
