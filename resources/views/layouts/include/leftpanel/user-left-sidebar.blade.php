@@ -31,6 +31,12 @@ $currentRoute = Route::current()->getName();
                     <i class="fa fa-picture-o u-mr-xsmall"></i>Image Draw
                 </a>
             </li>
+            
+            <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'spreadsheet' || $currentRoute == 'add-sheet' || $currentRoute == 'edit-sheet' || $currentRoute == 'view-sheet' ? 'is-active' : '') }}" href="{{ route('spreadsheet') }}">
+                    <i class="fa fa-file-excel-o u-mr-xsmall"></i>Spread Sheet
+                </a>
+            </li>
         </ul>
     </div>
 </div>

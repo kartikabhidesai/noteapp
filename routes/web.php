@@ -48,6 +48,13 @@ Route::match(['get', 'post'], 'imagedraw', ['as' => 'imagedraw', 'uses' => 'imag
 Route::match(['get', 'post'], 'savedrawimage', ['as' => 'savedrawimage', 'uses' => 'imagedraw\ImagedrawController@savedrawimage']);
 Route::match(['get', 'post'], 'deletedrawimage', ['as' => 'deletedrawimage', 'uses' => 'imagedraw\ImagedrawController@deletedrawimage']);
 
+Route::match(['get', 'post'], 'deletesheet', ['as' => 'deletesheet', 'uses' => 'spreadsheet\SpreadsheetController@deletesheet']);
+Route::match(['get', 'post'], 'view-sheet/{id}', ['as' => 'view-sheet', 'uses' => 'spreadsheet\SpreadsheetController@spreadsheetlistview']);
+Route::match(['get', 'post'], 'edit-sheet/{id}', ['as' => 'edit-sheet', 'uses' => 'spreadsheet\SpreadsheetController@spreadsheetlistedit']);
+Route::match(['get', 'post'], 'ajaxcall', ['as' => 'ajaxcall', 'uses' => 'spreadsheet\SpreadsheetController@ajaxcall']);
+Route::match(['get', 'post'], 'ajaxcalledit', ['as' => 'ajaxcalledit', 'uses' => 'spreadsheet\SpreadsheetController@ajaxcalledit']);
+Route::match(['get', 'post'], 'spreadsheet', ['as' => 'spreadsheet', 'uses' => 'spreadsheet\SpreadsheetController@spreadsheetlist']);
+Route::match(['get', 'post'], 'add-sheet', ['as' => 'add-sheet', 'uses' => 'spreadsheet\SpreadsheetController@spreadsheetlistadd']);
 });
 Route::match(['get', 'post'], 'userlist', ['as' => 'userlist', 'uses' => 'admin\UserController@index']);
 Route::match(['get', 'post'], 'admin-dashboard', ['as' => 'admin-dashboard', 'uses' => 'admin\UserController@dashborad']);
