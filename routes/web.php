@@ -61,11 +61,12 @@ Route::match(['get', 'post'], 'spreadsheet', ['as' => 'spreadsheet', 'uses' => '
 Route::match(['get', 'post'], 'add-sheet', ['as' => 'add-sheet', 'uses' => 'spreadsheet\SpreadsheetController@spreadsheetlistadd']);
 
 //Admin
+});
+
+
 Route::match(['get', 'post'], 'userlist', ['as' => 'userlist', 'uses' => 'admin\UserController@index']);
 Route::match(['get', 'post'], 'admin-dashboard', ['as' => 'admin-dashboard', 'uses' => 'admin\UserController@dashborad']);
 Route::match(['get', 'post'], 'ajaxAction', ['as' => 'ajaxAction', 'uses' => 'admin\UserController@ajaxAction']);
 Route::match(['get', 'post'], 'viewuser/{id}', ['as' => 'viewuser', 'uses' => 'admin\UserController@viewuser']);
 Route::match(['get', 'post'], 'chagepassword/{id}', ['as' => 'chagepassword', 'uses' => 'admin\UserController@changepassword']);
 Route::match(['get', 'post'], 'edituser/{id}', ['as' => 'edituser', 'uses' => 'admin\UserController@edituser']);
-
-});
