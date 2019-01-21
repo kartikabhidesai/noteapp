@@ -31,7 +31,7 @@ class Draw extends Model {
         return $result;
     }
 
-        public function addDraw($request,$id){
+    public function addDraw($request,$id){
         
         $name = '';
         if($request->file()){
@@ -55,8 +55,6 @@ class Draw extends Model {
         }
     }
     
-    
-    
     public function fileDelete($request){
         if($request->input('image'))
         {
@@ -68,5 +66,12 @@ class Draw extends Model {
             }
             return Draw::where('id', $request->input('id'))->delete();
         }
+    }
+    
+    public function fileEDit($id){
+       $result = Draw::select("draw_name","filename")
+                 ->where('id',$id)
+                 ->get()->toarray();
+        return $result;
     }
 }

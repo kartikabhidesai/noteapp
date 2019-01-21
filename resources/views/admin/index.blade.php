@@ -19,6 +19,7 @@
                                         
                                         <th class="c-table__cell c-table__cell--head">Last Name</th>
                                         <th class="c-table__cell c-table__cell--head">Email</th>
+                                        <th class="c-table__cell c-table__cell--head">Last Login</th>
                                         <th class="c-table__cell c-table__cell--head">Status</th>
                                         <th class="c-table__cell c-table__cell--head">Action</th>
                                     </tr>
@@ -32,6 +33,7 @@
                                         <td class="c-table__cell">{{ $userlist[$i]['first_name']}}</td>
                                         <td class="c-table__cell">{{ $userlist[$i]['last_name']}}</td>
                                         <td class="c-table__cell">{{ $userlist[$i]['email']}}</td>
+                                        <td class="c-table__cell">{{ $userlist[$i]['last_login']}}</td>
                                         <td class="c-table__cell">
                                             @if($userlist[$i]['status'] == '0')
                                                 <span class="c-badge c-badge--success deactive" data-token="{{ csrf_token() }}"  data-id="{{ $userlist[$i]['id'] }}" data-toggle="modal" data-target="#deactivemodel" >Active</span>
@@ -48,6 +50,7 @@
                                                     <div class="c-dropdown__menu dropdown-menu" aria-labelledby="dropdownMenuButton10">
                                                         <a class="c-dropdown__item dropdown-item" href="{{ route('edituser',$userlist[$i]['id']) }}">Edit</a>
                                                         <a class="c-dropdown__item dropdown-item" href="{{ route("viewuser",$userlist[$i]['id']) }}">View</a>
+                                                        <a class="c-dropdown__item dropdown-item" href="{{ route("chagepassword",$userlist[$i]['id']) }}">Change Password</a>
                                                         <a class="c-dropdown__item dropdown-item delete" data-token="{{ csrf_token() }}"  data-toggle="modal" data-target="#deleteModel" data-token="{{ csrf_token() }}"  data-id="{{ $userlist[$i]['id'] }}">
                                                             Delete
                                                         </a>

@@ -18,7 +18,51 @@ use Config;
 class Users extends Model {
 
     protected $table = 'users';
+    
+    public function getinfo($request){
+//        
+            $result= Users::where('email',$request->input('email'))->count();
+       if($result != '1'){
+           return "0";
+       }else{
+          $email=$request->input('email','first_name');
+            $userid= Users::select("id")
+                  ->where('email',$email)->get();
+            $user_id = $userid[0]['id'];
+            $newpassword = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyzASLKJHGDMNBVCXZPOIUYTREWQ", 6)), 0, 6);
+            print_r($newpassword);
+            $objUser = Users::find($user_id);
+            $objUser->password = Hash::make($newpassword);
+            $objUser->updated_at = date('Y-m-d H:i:s');
+            $objUser->save();
+            $mailData['subject'] = 'Forgot password';
+            $mailData['attachment'] = array();
+            $mailData['mailto'] = $email;
+            $sendMail = new Sendmail;
+            $mailData['data']['name'] = $userid[0]['first_name'];
+            $mailData['data']['password'] = $newpassword;
+            $mailData['template'] = 'emails.forgot-email';
+            $res = $sendMail->sendSMTPMail($mailData);
+            if($res){
+                return "1";
+            }else{
+                return "2";
+            }
+       }
+    }
 
+    public function lastlogin($id){
+       $objUser = Users::find($id);
+        $objUser->last_login = date('Y-m-d H:i:s');
+        return $objUser->save();
+    }
+    
+    public function updatepassword($request,$id){
+         $newpass = Hash::make($request->input('newpassword'));
+        $objUser = Users::find($id);
+        $objUser->password = $newpass;
+        return $objUser->save();
+    }
 
     public function saveUserInfo($request) {
 
@@ -56,10 +100,10 @@ class Users extends Model {
     
     public function userlist($id=null){
         if($id){
-            return Users::select('id','first_name','last_name','email','status','role_type')
+            return Users::select('id','last_login','first_name','last_name','email','status','role_type')
                         ->where('id', '=',$id)->get()->toarray();
         }else{
-        return Users::select('id','first_name','last_name','email','status')
+        return Users::select('id','last_login','first_name','last_name','email','status')
                         ->where('role_type', '=','1')->get()->toarray();
         }
     }   

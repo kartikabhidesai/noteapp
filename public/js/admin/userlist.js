@@ -96,13 +96,26 @@ var Userlist = function() {
             handleAjaxFormSubmit(form);
         });  
     };
- 
+    
+    var   changepass=function(){
+        var form = $('#changepassword');
+        var rules = {
+            newpassword: {required: true},
+            confirmPassword: {required: true,equalTo: "#newpassword"},
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form);
+        });
+    };
     return{
         Init: function() {
             list();
         },
         Edit:function(){
           update();  
+        },
+        Changepassword:function(){
+            changepass();
         },
     };
 }();

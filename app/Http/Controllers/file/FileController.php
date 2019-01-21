@@ -89,6 +89,8 @@ class FileController extends Controller {
         return Response::download($filepath);
     }
     
+   
+
     public function deletefile(Request $request) {
         if ($request->isMethod('post')) {
             $objFileDelete= new Files();

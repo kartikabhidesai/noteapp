@@ -56,10 +56,16 @@ class LoginController extends Controller {
                     'user_image' => Auth::guard('web')->user()->user_image,
                     'id' => Auth::guard('web')->user()->id
                 );
+                
+                $objUser=new Users;
+                $result=$objUser->lastlogin(Auth::guard('web')->user()->id);
+                
                 Session::push('logindata', $loginData);
                 $request->session()->flash('session_success', 'User Login successfully.');
                 return redirect()->route('dashboard');
-            }else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'),'role_type'=>'0'])) {
+            }
+            
+            else if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'),'role_type'=>'0'])) {
                 $loginData = array(
                     'name' => Auth::guard('admin')->user()->first_name,
                     'last_name' => Auth::guard('admin')->user()->last_name,
@@ -67,6 +73,9 @@ class LoginController extends Controller {
                     'user_image' => Auth::guard('admin')->user()->user_image,
                     'id' => Auth::guard('admin')->user()->id
                 );
+                $objUser=new Users;
+                $result=$objUser->lastlogin(Auth::guard('admin')->user()->id);
+                
                 Session::push('logindata', $loginData);
                 $request->session()->flash('session_success', 'User Login successfully.');
                 return redirect()->route('admin-dashboard');
@@ -111,6 +120,38 @@ class LoginController extends Controller {
         $data['js'] = array('admin/user.js');
         $data['funinit'] = array('Customer.registerInit()');
         return view('auth.register', $data);
+    }
+    
+    
+    public function forgotpassword(Request $request){
+        if ($request->isMethod('post')) {
+//            print_r($request->input());exit;
+            $objUser = new Users();
+            $forgotpassword = $objUser->getinfo($request);
+            if ($forgotpassword == "0" ) {
+                $return['status'] = 'error';
+                $return['message'] = "Email Id doesn't match.";
+            }
+            
+            if ($forgotpassword == "1" )  {
+                $return['status'] = 'success';
+                $return['message'] = 'Reset Password Link Successfully sent to your email.';
+                 $return['redirect'] = route('login');
+            }
+            
+            if ($forgotpassword == "2" )  {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+
+        $data['css'] = array();
+        $data['pluginjs'] = array('jQuery/jquery.validate.min.js');
+        $data['js'] = array('admin/user.js');
+        $data['funinit'] = array('Customer.Forgotpassword()');
+        return view('auth.forgotpassword', $data);
     }
         
     

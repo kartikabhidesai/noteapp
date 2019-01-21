@@ -76,7 +76,7 @@
 
     <div class="o-line">
         <a class="u-text-mute u-text-small" href="{{ route('register') }}">Don't have an account yet? Get Started</a>
-        <a class="u-text-mute u-text-small" href="javascript:;">Forgot Password?</a>
+        <a class="u-text-mute u-text-small" href="{{ route('forgotpassword') }}">Forgot Password?</a>
     </div>
 </div>
 

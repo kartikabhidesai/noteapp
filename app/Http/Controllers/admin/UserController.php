@@ -119,4 +119,31 @@ class UserController extends Controller {
         $data['funinit'] = array('Userlist.Edit()');
         return view('admin.editview',$data);
     }
+    
+    public function changepassword(Request $request,$id){
+//        $objUserlist= new Users();
+//        $data['userlist']= $objUserlist->userlist($id);
+        $data['userid']=$id;
+        if ($request->isMethod('post')) {
+            
+          $objUserlist= new Users();
+          $updatepassword = $objUserlist->updatepassword($request,$id);
+            if ($updatepassword) {
+                $return['status'] = 'success';
+                $return['message'] = 'User Details  updated successfully.';
+                $return['redirect'] = route('userlist');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array();
+        $data['css'] = array('');
+        $data['js'] = array('admin/userlist.js');
+        $data['funinit'] = array('Userlist.Changepassword()');
+        return view('admin.chnagepassword',$data);
+    }
 }?>

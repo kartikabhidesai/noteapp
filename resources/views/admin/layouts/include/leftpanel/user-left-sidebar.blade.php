@@ -15,7 +15,7 @@ $currentRoute = Route::current()->getName();
             </li>
             
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'edituser' || $currentRoute == 'userlist' || $currentRoute == 'viewuser'   ? 'is-active' : '') }}" href="{{ route('userlist') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'chagepassword' || $currentRoute == 'edituser' || $currentRoute == 'userlist' || $currentRoute == 'viewuser'   ? 'is-active' : '') }}" href="{{ route('userlist') }}">
                     <i class="fa fa-users u-mr-xsmall"></i>User List
                 </a>
             </li>

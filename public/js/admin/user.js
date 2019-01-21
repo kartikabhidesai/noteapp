@@ -72,6 +72,17 @@ var Customer = function() {
             handleAjaxFormSubmit(form);
         });
     };
+    
+    var forgotpass=function(){
+        
+     var form = $('#forgotpassword');
+        var rules = {
+            email: {required: true, email: true},
+        };
+        handleFormValidate(form, rules, function(form) {
+            handleAjaxFormSubmit(form);
+        });
+    };
 
 
     return{
@@ -90,6 +101,9 @@ var Customer = function() {
         registerInit: function() {
 
             register();
+        },
+        Forgotpassword:function(){
+            forgotpass();
         },
     };
 }();

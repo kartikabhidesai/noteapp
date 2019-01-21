@@ -70,4 +70,16 @@ class ImagedrawController extends Controller {
             }
         }
     }
+    
+    public function editimage($id){
+        $objfileEDit= new Draw();
+        $data['fileEDit'] = $objfileEDit->fileEDit($id);
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array();
+        $data['css'] = array('');
+        $data['js'] = array('imagedraw/painterro.min.js','imagedraw/imagedraw.js');
+        $data['funinit'] = array('Imagedraw.Edit()');
+
+        return view('imagedraw.imagedrawedit', $data);
+    }
 }
