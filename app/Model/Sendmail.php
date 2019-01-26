@@ -36,10 +36,10 @@ class Sendmail extends Model
         $pathToFile = $mailData['attachment'];
 
         Mail::send($mailData['template'], ['data' => $mailData['data']['password']], function ($m) use ($mailData,$pathToFile) {
-              $m->from('postmaster@sandboxf48f346bcf6a405d807d048464a939e4.mailgun.org', 'HRMS SAAS');
+              $m->from(env('MAIL_USERNAME'), 'NOTE APP New Password');
 
               //$m->to('abhishekdesai39@gmail.com', "Office Park")->subject($mailData['subject']);
-              $m->to($mailData['mailto'], "HRMS SAAS")->subject($mailData['subject']);
+              $m->to($mailData['mailto'], "NOTE APP New Password")->subject($mailData['subject']);
               //  $m->bcc('info@officepark.group');
               // print_r($pathToFile);
               if(!empty($pathToFile)) {

@@ -103,13 +103,19 @@ class LoginController extends Controller {
            // print_r($request->input());exit;
             $objUser = new Users();
             $userList = $objUser->saveUserInfo($request);
-            if ($userList) {
+            if ($userList == '1') {
                 $return['status'] = 'success';
                 $return['message'] = 'User created successfully.';
                 $return['redirect'] = route('login');
-            } else {
+            } 
+            if($userList == '2'){
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
+            }
+            
+            if($userList == '0'){
+                $return['status'] = 'error';
+                $return['message'] = 'Email id already Exist.';
             }
             echo json_encode($return);
             exit;

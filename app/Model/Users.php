@@ -30,7 +30,7 @@ class Users extends Model {
                   ->where('email',$email)->get();
             $user_id = $userid[0]['id'];
             $newpassword = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyzASLKJHGDMNBVCXZPOIUYTREWQ", 6)), 0, 6);
-            print_r($newpassword);
+           
             $objUser = Users::find($user_id);
             $objUser->password = Hash::make($newpassword);
             $objUser->updated_at = date('Y-m-d H:i:s');
@@ -65,7 +65,11 @@ class Users extends Model {
     }
 
     public function saveUserInfo($request) {
-
+//        $objUser = new Users();
+        $result = Users::where('email',$request->input('email'))->count();
+        if($result != 0){
+            return "0";
+        }else{
         $newpassword = ($request->input('password') != '') ? $request->input('password') : null;
         $newpass = Hash::make($newpassword);
         $objUser = new Users();
@@ -75,8 +79,12 @@ class Users extends Model {
         $objUser->password = $newpass;
         $objUser->created_at = date('Y-m-d H:i:s');
         $objUser->updated_at = date('Y-m-d H:i:s');
-        $objUser->save();
-        return TRUE;
+        if($objUser->save()){
+            return "1";
+        }else{
+            return "2";
+        }
+        return TRUE;}
     }
 
     public function updateUserInfo($request) {
