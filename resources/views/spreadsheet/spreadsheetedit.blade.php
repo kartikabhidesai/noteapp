@@ -54,6 +54,9 @@
     input.has-error {
         border-color: red;
     }
+    #my{
+        overflow: scroll;
+    }
 </style>
 <script>
     var data=<?php print_r($sheetdata[0]["data"]); ?>;

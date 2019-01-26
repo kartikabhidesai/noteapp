@@ -26,7 +26,7 @@
                     <div class="row" style="width: 100%;height: 100%;">
                         <div class="col-lg-12" style="width: 100%;height: auto;">
                             <button class="c-btn c-btn--info" onclick="p.show()"> Start Draw</button>
-                            <div id="wrapper">
+                            <div id="wrapper" style="min-height: 500px;">
                                 <div id="conatinerqwe"></div>
                             </div>
                         </div>
@@ -39,6 +39,9 @@
 <style>
     input.has-error {
         border-color: red;
+    }
+    .ptro-bar{
+        overflow: scroll;
     }
 </style>
 <style>
