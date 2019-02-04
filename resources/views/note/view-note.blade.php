@@ -20,7 +20,7 @@
                             <div class="col-lg-12">
                                 <div class="c-field u-mb-small">
                                     <label class="c-field__label" for="noteTitle">Note Title</label> 
-                                    <input class="c-input" name="noteTitle" id="noteTitle" placeholder="Enter Note Title" value="{{ $note['0']['id'] }}" type="text" disabled>
+                                    <input class="c-input" name="noteTitle" id="noteTitle" placeholder="Enter Note Title" value="{{ $note['0']['note_titile'] }}" type="text" disabled>
                                     <input class="c-input" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                                 </div>
                             </div>

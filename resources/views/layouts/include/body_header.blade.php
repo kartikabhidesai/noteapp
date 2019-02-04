@@ -13,7 +13,7 @@
             </a>
 
             <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuAvatar">
-                <!--<a class="c-dropdown__item dropdown-item" href="#">Edit Profile</a>-->
+                
                 <!--<a class="c-dropdown__item dropdown-item" href="javascript:;">Edit info</a>-->
                 <a class="c-dropdown__item dropdown-item" href="{{ route('logout') }}">Logout</a>
 <!--                <a class="c-dropdown__item dropdown-item" href="#">Manage Roles</a>-->

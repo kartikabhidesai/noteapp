@@ -40,10 +40,10 @@
                                                 
                                                 <div class="c-dropdown__menu dropdown-menu" aria-labelledby="dropdownMenuButton10">
                                                     <a class="c-dropdown__item dropdown-item" href="{{ route('download-file',$filelist[$i]['filename'])}}">Download</a>
-                                                    <a class="c-dropdown__item dropdown-item" href="{{ route('edit-file',$filelist[$i]['id'] )}}">Edit</a>
+                                                    <a class="c-dropdown__item dropdown-item viewimage" data-image="{{ $filelist[$i]['filename']}}"   data-toggle="modal" data-target="#viewimage" data-token="{{ csrf_token() }}"  data-id="{{ $filelist[$i]['id'] }}"  href="javascript:;">View</a>
                                                     <a class="c-dropdown__item dropdown-item deletenote" data-image="{{ $filelist[$i]['filename']}}" data-toggle="modal" data-target="#deleteModel" data-token="{{ csrf_token() }}"  data-id="{{ $filelist[$i]['id'] }}">
                                                             Delete
-                                                        </a>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </td>
@@ -61,4 +61,23 @@
                     </div>
                 </div><!-- // .row -->
             </div>
+
+<div class="c-modal c-modal--huge modal fade" id="viewimage" tabindex="-1" role="dialog" aria-labelledby="modal8" data-backdrop="static">
+        <div class="c-modal__dialog modal-dialog" role="document">
+            <div class="c-modal__content">
+
+                <div class="c-modal__header">
+                    <h3 class="c-modal__title">View Image</h3>
+                    <span class="c-modal__close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-close"></i>
+                    </span>
+                </div>
+
+                <div class="c-modal__body addhtml">
+                    
+                </div>
+                
+            </div><!-- // .c-modal__content -->
+        </div><!-- // .c-modal__dialog -->
+    </div><!-- // .c-modal -->
 @endsection

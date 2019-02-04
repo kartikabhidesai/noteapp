@@ -10,6 +10,8 @@ use Session;
 use Redirect;
 use App\Model\Users;
 
+
+use Validator;
 class LoginController extends Controller {
 
     use AuthenticatesUsers;
@@ -31,17 +33,7 @@ class LoginController extends Controller {
 
     public function auth(Request $request) {
         $this->resetGuard();
-
-//        if(Auth::guard('admin')){
-//            return redirect(route('admin-dashboard'));
-//        }else if(Auth::guard('customer')){
-//            return redirect(route('customer-dashboard'));
-//        }else if(Auth::guard('web')){
-//            return redirect(route('user-dashboard'));
-//        }else{
-//            return view('auth.login');
-//        }
-
+        
         if ($request->isMethod('post')) {
             $this->validate($request, [
                 'email' => 'required|email',
@@ -56,10 +48,8 @@ class LoginController extends Controller {
                     'user_image' => Auth::guard('web')->user()->user_image,
                     'id' => Auth::guard('web')->user()->id
                 );
-                
                 $objUser=new Users;
                 $result=$objUser->lastlogin(Auth::guard('web')->user()->id);
-                
                 Session::push('logindata', $loginData);
                 $request->session()->flash('session_success', 'User Login successfully.');
                 return redirect()->route('dashboard');
@@ -73,9 +63,9 @@ class LoginController extends Controller {
                     'user_image' => Auth::guard('admin')->user()->user_image,
                     'id' => Auth::guard('admin')->user()->id
                 );
+                
                 $objUser=new Users;
                 $result=$objUser->lastlogin(Auth::guard('admin')->user()->id);
-                
                 Session::push('logindata', $loginData);
                 $request->session()->flash('session_success', 'User Login successfully.');
                 return redirect()->route('admin-dashboard');

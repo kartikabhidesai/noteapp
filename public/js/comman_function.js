@@ -233,7 +233,6 @@ function ajaxcall(url, data, callback) {
         data: data,
         async: false,
         success: function (result) {
-            //   App.stopPageLoading();
             callback(result);
         }
     })

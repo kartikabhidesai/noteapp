@@ -35,10 +35,10 @@ var File=function(){
 
     };
     var editadd=function(){
+       
        var form = $('#editfile');
         var rules = {
             filetitle: {required: true},
-            fileupload: {required: true},
         };
         handleFormValidate(form, rules, function(form) {
             handleAjaxFormSubmit(form,true);

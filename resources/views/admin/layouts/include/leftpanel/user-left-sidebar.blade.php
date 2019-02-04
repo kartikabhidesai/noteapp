@@ -20,6 +20,12 @@ $currentRoute = Route::current()->getName();
                 </a>
             </li>
             
+            <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'adminchagepassword' ? 'is-active' : '') }}" href="{{ route('adminchagepassword') }}">
+                    <i class="fa fa-edit u-mr-xsmall"></i>Change Password
+                </a>
+            </li>
+            
         </ul>
     </div>
 </div>

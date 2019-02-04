@@ -37,6 +37,12 @@ $currentRoute = Route::current()->getName();
                     <i class="fa fa-file-excel-o u-mr-xsmall"></i>Spread Sheet
                 </a>
             </li>
+            
+            <li class="c-sidebar__item">
+                <a class="c-sidebar__link {{ ($currentRoute == 'changepassword' ? 'is-active' : '') }}" href="{{ route('changepassword') }}">
+                    <i class="fa fa-edit u-mr-xsmall" ></i>Change Password
+                </a>
+            </li>
         </ul>
     </div>
 </div>

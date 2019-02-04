@@ -17,6 +17,7 @@ class UserController extends Controller {
     public function index() {
         $objFileList= new Users();
         $data['userlist']= $objFileList->userlist();
+        
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array('');
@@ -86,14 +87,11 @@ class UserController extends Controller {
             }
         }
     }
-    
-    
     public function viewuser($id){
         $objFileList= new Users();
         $data['userlist']= $objFileList->userlist($id);
         return view('admin.userview',$data);
     }
-    
     public function edituser(Request $request,$id){
         $objUserlist= new Users();
         $data['userlist']= $objUserlist->userlist($id);
@@ -119,10 +117,8 @@ class UserController extends Controller {
         $data['funinit'] = array('Userlist.Edit()');
         return view('admin.editview',$data);
     }
-    
     public function changepassword(Request $request,$id){
-//        $objUserlist= new Users();
-//        $data['userlist']= $objUserlist->userlist($id);
+
         $data['userid']=$id;
         if ($request->isMethod('post')) {
             
@@ -145,5 +141,38 @@ class UserController extends Controller {
         $data['js'] = array('admin/userlist.js');
         $data['funinit'] = array('Userlist.Changepassword()');
         return view('admin.chnagepassword',$data);
+    }
+    
+    public function adminchangepassword(Request $request){
+         $data['detail'] = $this->loginUser;
+        if ($request->isMethod('post')) {
+          $objuser = new Users();
+          $changepassword = $objuser->changepassword($request,$data['detail']);
+            if ($changepassword=='1') {
+                $return['status'] = 'success';
+                $return['message'] = 'Your password changed.';
+                $return['redirect'] = route('admin-dashboard');
+            }
+            
+            if ($changepassword=='2') {
+                $return['status'] = 'error';
+                $return['message'] = 'Something goes to wronge.';
+            }
+            
+            if ($changepassword=='0') {
+                $return['status'] = 'error';
+                $return['message'] = 'Your old password not match.';
+            } 
+            
+            echo json_encode($return);
+            exit;
+        }
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array();
+        $data['css'] = array('');
+        $data['js'] = array('profile/changepassword.js');
+        $data['funinit'] = array('Changepassword.Init()');
+
+        return view('admin.profile.changepassowrd', $data);
     }
 }?>

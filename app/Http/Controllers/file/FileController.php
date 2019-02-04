@@ -77,7 +77,7 @@ class FileController extends Controller {
         $data['pluginjs'] = array();
         $data['css'] = array('');
         $data['js'] = array('file/file.js');
-        $data['funinit'] = array('File.edit()');
+        $data['funinit'] = array('File.Edit()');
 
         return view('file.editfile', $data);
     }

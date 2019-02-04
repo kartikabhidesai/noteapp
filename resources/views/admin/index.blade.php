@@ -20,6 +20,7 @@
                                         <th class="c-table__cell c-table__cell--head">Last Name</th>
                                         <th class="c-table__cell c-table__cell--head">Email</th>
                                         <th class="c-table__cell c-table__cell--head">Last Login</th>
+                                        <th class="c-table__cell c-table__cell--head">Ip Address</th>
                                         <th class="c-table__cell c-table__cell--head">Status</th>
                                         <th class="c-table__cell c-table__cell--head">Action</th>
                                     </tr>
@@ -34,6 +35,7 @@
                                         <td class="c-table__cell">{{ $userlist[$i]['last_name']}}</td>
                                         <td class="c-table__cell">{{ $userlist[$i]['email']}}</td>
                                         <td class="c-table__cell">{{ $userlist[$i]['last_login']}}</td>
+                                        <td class="c-table__cell">{{ $userlist[$i]['last_login_ip']}}</td>
                                         <td class="c-table__cell">
                                             @if($userlist[$i]['status'] == '0')
                                                 <span class="c-badge c-badge--success deactive" data-token="{{ csrf_token() }}"  data-id="{{ $userlist[$i]['id'] }}" data-toggle="modal" data-target="#deactivemodel" >Active</span>

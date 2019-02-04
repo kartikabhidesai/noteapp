@@ -52,8 +52,10 @@ class Users extends Model {
     }
 
     public function lastlogin($id){
-       $objUser = Users::find($id);
+         $ip = $_SERVER['REMOTE_ADDR'];
+        $objUser = Users::find($id);
         $objUser->last_login = date('Y-m-d H:i:s');
+        $objUser->last_login_ip = $ip;
         return $objUser->save();
     }
     
@@ -108,10 +110,10 @@ class Users extends Model {
     
     public function userlist($id=null){
         if($id){
-            return Users::select('id','last_login','first_name','last_name','email','status','role_type')
+            return Users::select('id','last_login','last_login_ip','first_name','last_name','email','status','role_type')
                         ->where('id', '=',$id)->get()->toarray();
         }else{
-        return Users::select('id','last_login','first_name','last_name','email','status')
+        return Users::select('id','last_login','last_login_ip','first_name','last_name','email','status')
                         ->where('role_type', '=','1')->get()->toarray();
         }
     }   
@@ -149,4 +151,20 @@ class Users extends Model {
         return TRUE;
     }
    
+    public function changepassword($request,$userdetail){
+       
+        $newpass = Hash::make($request->input('newpassword'));
+        if(Hash::check($request->input('oldpassword'), $userdetail['password'])){
+             $objUser = Users::find($userdetail['id']);
+             $objUser->password = $newpass;
+             $objUser->updated_at = date('Y-m-d H:i:s');
+             if($objUser->save()){
+                 return "1";
+             }else{
+                 return "2";
+             }
+        }else{
+            return "0";
+        }
+    }
 }

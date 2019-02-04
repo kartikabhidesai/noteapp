@@ -11,6 +11,12 @@ var Imagedraw = function () {
             },500);
        });
        
+        $('body').on('click','.viewimage',function(){
+            var image = $(this).attr('data-image');
+            var htmlimg='<center><img style="border:5px;border-style: groove;"  src="'+baseurl+'uploads/file/'+image+'" alt="Logo"></center>';
+            $('.addhtml').html(htmlimg);
+           alert($html);
+        });
        $('body').on('click','.yes-sure',function(){
             var id = $(this).attr('data-id');
             var token = $(this).attr('data-token');

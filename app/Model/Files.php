@@ -8,6 +8,7 @@ use DB;
 use Auth;
 use App\Model\UserHasPermission;
 use App\Model\Sendmail;
+use App\Model\Files;
 use Config;
 
 class Files extends Model {
@@ -61,8 +62,9 @@ class Files extends Model {
     public function editFile($request){
         $name = '';
         $fileid=$request->input('fileid');
-       if($request->file()){
         
+       if(count($request->file()) != 0){
+         
         $result = Files::where('id','=',$fileid)
               ->get()->toarray();
         $oldfile=$result[0]['file_name'];
@@ -79,10 +81,12 @@ class Files extends Model {
         
         $ip = $_SERVER['REMOTE_ADDR'];
         
-        $objedit = File::find($fileid);
-        $objedit->file_name = $name;
+        $objedit = Files::find($fileid);
         $objedit->file_title = $request->input('filetitle');
+        if(count($request->file()) != 0){
+            $objedit->file_name = $name;
         
+        }
         if ($objedit->save()) {
             return TRUE;
         } else {
