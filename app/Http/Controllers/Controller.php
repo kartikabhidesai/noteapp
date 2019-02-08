@@ -22,6 +22,12 @@ class Controller extends BaseController
             if (!empty(Auth::user())) {
                 $this->loginUser = Auth::user();
             }
+            if (!empty(Auth::guard('admin'))) {
+                $this->loginUser = Auth::guard('admin')->user();
+            }
+            if (!empty(Auth::guard('web'))) {
+                $this->loginUser = Auth::guard('web')->user();
+            }
             return $next($request);
         });
     }

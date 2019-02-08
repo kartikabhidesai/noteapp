@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Response;
 use App\Model\Users;
+use Auth;
 
 class UserController extends Controller {
     
@@ -119,6 +120,7 @@ class UserController extends Controller {
     }
     public function changepassword(Request $request,$id){
 
+        
         $data['userid']=$id;
         if ($request->isMethod('post')) {
             
@@ -145,8 +147,10 @@ class UserController extends Controller {
     
     public function adminchangepassword(Request $request){
          $data['detail'] = $this->loginUser;
+       
         if ($request->isMethod('post')) {
           $objuser = new Users();
+          
           $changepassword = $objuser->changepassword($request,$data['detail']);
             if ($changepassword=='1') {
                 $return['status'] = 'success';

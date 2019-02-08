@@ -61,6 +61,7 @@ class Users extends Model {
     
     public function updatepassword($request,$id){
          $newpass = Hash::make($request->input('newpassword'));
+         echo $id;exit;
         $objUser = Users::find($id);
         $objUser->password = $newpass;
         return $objUser->save();
@@ -154,6 +155,7 @@ class Users extends Model {
     public function changepassword($request,$userdetail){
        
         $newpass = Hash::make($request->input('newpassword'));
+        
         if(Hash::check($request->input('oldpassword'), $userdetail['password'])){
              $objUser = Users::find($userdetail['id']);
              $objUser->password = $newpass;

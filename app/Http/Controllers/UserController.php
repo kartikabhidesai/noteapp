@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Users;
+use Auth;
+
 class UserController extends Controller {
     
     public function __construct() {
@@ -16,6 +18,7 @@ class UserController extends Controller {
     }
      public function changepassword(Request $request){
         $data['detail'] = $this->loginUser;
+       
         if ($request->isMethod('post')) {
             
           $objuser = new Users();

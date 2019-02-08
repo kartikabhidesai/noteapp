@@ -63,7 +63,7 @@ Route::match(['get', 'post'], 'spreadsheet', ['as' => 'spreadsheet', 'uses' => '
 Route::match(['get', 'post'], 'add-sheet', ['as' => 'add-sheet', 'uses' => 'spreadsheet\SpreadsheetController@spreadsheetlistadd']);
 
 });
-Route::group(['prefix' => $userPrefix, 'middleware' => ['auth']], function() {
+Route::group(['prefix' => $userPrefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'userlist', ['as' => 'userlist', 'uses' => 'admin\UserController@index']);
     Route::match(['get', 'post'], 'adminchagepassword', ['as' => 'adminchagepassword', 'uses' => 'admin\UserController@adminchangepassword']);
     Route::match(['get', 'post'], 'admin-dashboard', ['as' => 'admin-dashboard', 'uses' => 'admin\UserController@dashborad']);
