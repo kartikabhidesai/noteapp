@@ -153,7 +153,7 @@ class Users extends Model {
     }
    
     public function changepassword($request,$userdetail){
-       
+      
         $newpass = Hash::make($request->input('newpassword'));
         
         if(Hash::check($request->input('oldpassword'), $userdetail['password'])){

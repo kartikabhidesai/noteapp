@@ -146,8 +146,8 @@ class UserController extends Controller {
     }
     
     public function adminchangepassword(Request $request){
-         $data['detail'] = $this->loginUser;
-       
+         $data['detail'] = Auth::guard('admin')->user();
+         
         if ($request->isMethod('post')) {
           $objuser = new Users();
           
