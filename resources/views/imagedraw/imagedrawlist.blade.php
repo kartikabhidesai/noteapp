@@ -41,9 +41,8 @@
                                                 <div class="c-dropdown__menu dropdown-menu" aria-labelledby="dropdownMenuButton10">
                                                     <a class="c-dropdown__item dropdown-item" href="{{ route('download-file',$filelist[$i]['filename'])}}">Download</a>
                                                     <a class="c-dropdown__item dropdown-item viewimage" data-image="{{ $filelist[$i]['filename']}}"   data-toggle="modal" data-target="#viewimage" data-token="{{ csrf_token() }}"  data-id="{{ $filelist[$i]['id'] }}"  href="javascript:;">View</a>
-                                                    <a class="c-dropdown__item dropdown-item deletenote" data-image="{{ $filelist[$i]['filename']}}" data-toggle="modal" data-target="#deleteModel" data-token="{{ csrf_token() }}"  data-id="{{ $filelist[$i]['id'] }}">
-                                                            Delete
-                                                    </a>
+                                                    <a href="{{ route("edit-image",$filelist[$i]['id']) }}"class="c-dropdown__item dropdown-item deletenote" >Edit</a>
+                                                    <a class="c-dropdown__item dropdown-item deletenote" data-image="{{ $filelist[$i]['filename']}}" data-toggle="modal" data-target="#deleteModel" data-token="{{ csrf_token() }}"  data-id="{{ $filelist[$i]['id'] }}">Delete</a>
                                                 </div>
                                             </div>
                                         </td>

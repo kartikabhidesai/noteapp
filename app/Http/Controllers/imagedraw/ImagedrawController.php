@@ -49,9 +49,28 @@ class ImagedrawController extends Controller {
             echo json_encode($return);
             exit;
         }
-        return view('imagedraw.imagedrawadd', $data);
+//        return view('imagedraw.imagedrawadd', $data);
     }
     
+    public function editDrawImage(Request $request){
+       $data['detail'] = $this->loginUser; 
+       if ($request->isMethod('post')) {
+            
+          $objAddFile = new Draw();
+          $addFile = $objAddFile->editDraw($request);
+            if ($addFile) {
+                $return['status'] = 'success';
+                $return['message'] = 'Drawing saved successfully.';
+                $return['redirect'] = route('imagedrawlist');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+    }
+
     public function deletedrawimage(Request $request) {
         if ($request->isMethod('post')) {
             $objFileDelete= new Draw();
@@ -74,6 +93,7 @@ class ImagedrawController extends Controller {
     public function editimage($id){
         $objfileEDit= new Draw();
         $data['fileEDit'] = $objfileEDit->fileEDit($id);
+        
         $data['plugincss'] = array();
         $data['pluginjs'] = array();
         $data['css'] = array('');

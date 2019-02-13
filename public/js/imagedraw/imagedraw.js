@@ -81,6 +81,8 @@ var Imagedraw = function () {
     };
     
     var imagedrawedit = function(){
+        var imageName=$("#imageName").val();
+        var token = $("#_token").val();
          window.p = Painterro({
             id: 'conatinerqwe',
             initText: 'Press <strong>Prn Scr</strong>, Ctrl+V to paste a screenshot',
@@ -91,12 +93,13 @@ var Imagedraw = function () {
             saveHandler: function (image, done) {
                 var formData = new FormData();
                 var filename=$('#noteTitle').val();
+                var id=$('#imageId').val();
                 formData.append('fileupload', image.asBlob(), image.suggestedFileName());
                 formData.append('filetitle', filename);
-                // you can also pass suggested filename 
-                // formData.append('image', image.asBlob(), image.suggestedFileName());
+                formData.append('id', id);
+                formData.append('_token', token);
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', baseurl +'savedrawimage', true);
+                xhr.open('POST', baseurl +'editdrawImage', true);
                 xhr.onload = xhr.onerror = function () {
                     done(true);
                 };
@@ -113,13 +116,8 @@ var Imagedraw = function () {
             availableLineWidths: [1, 2, 4, 8, 16, 64],
             availableEraserWidths: [1, 2, 4, 8, 16, 64],
             availableFontSizes: [1, 2, 4, 8, 16, 64],
-            // how_to_paste_actions: ['replace_all'],
-
-            //toolbarPosition: 'top',
-            // fixMobilePageReloader: false,
-            // defaultTool: 'line',
-            //hiddenTools: ['line']
-        }).show();
+            
+        }).show(baseurl + 'uploads/file/' +imageName);
         const ctx = window.p.ctx;
 
         console.log(ctx);

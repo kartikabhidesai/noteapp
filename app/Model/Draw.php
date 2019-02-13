@@ -55,6 +55,41 @@ class Draw extends Model {
         }
     }
     
+    public function editDraw($request){
+//        print_r($request->input());
+//        exit;
+//        [filetitle] => Hello I am Parth
+//        [id] => 6
+        $name = '';
+        $result = Draw::select("filename")
+                 ->where('id',$request->input('id'))
+                 ->get()->toarray();
+        
+        $file=  base_path().'/public/uploads/file/'.$result[0]['filename'];
+        if (file_exists($file)) {
+               unlink($file);  
+        }
+        
+        if($request->file()){
+            $file = $request->file('fileupload');
+            $name = time().'.'.$file->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/file/');
+            $file->move($destinationPath, $name);    
+        }
+        
+        $ip = $_SERVER['REMOTE_ADDR'];
+        
+        $objedit = Draw::find($request->input('id'));
+        $objedit->draw_name = $request->input('filetitle');
+        $objedit->filename = $name;
+        $objedit->ip_address = $ip;
+        return($objedit->save()); 
+//        /$objadd = new Draw();
+//        return $result;
+//        print_r();
+//        die();
+    }
+
     public function fileDelete($request){
         if($request->input('image'))
         {
@@ -69,7 +104,7 @@ class Draw extends Model {
     }
     
     public function fileEDit($id){
-       $result = Draw::select("draw_name","filename")
+       $result = Draw::select("id","draw_name","filename")
                  ->where('id',$id)
                  ->get()->toarray();
         return $result;

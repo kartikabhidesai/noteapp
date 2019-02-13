@@ -51,6 +51,7 @@ Route::match(['get', 'post'], 'imagedrawlist', ['as' => 'imagedrawlist', 'uses' 
 Route::match(['get', 'post'], 'imagedraw', ['as' => 'imagedraw', 'uses' => 'imagedraw\ImagedrawController@imagedrawadd']);
 Route::match(['get', 'post'], 'savedrawimage', ['as' => 'savedrawimage', 'uses' => 'imagedraw\ImagedrawController@savedrawimage']);
 Route::match(['get', 'post'], 'deletedrawimage', ['as' => 'deletedrawimage', 'uses' => 'imagedraw\ImagedrawController@deletedrawimage']);
+Route::match(['get', 'post'], 'editdrawImage', ['as' => 'editdrawImage', 'uses' => 'imagedraw\ImagedrawController@editdrawImage']);
 Route::match(['get', 'post'], 'edit-image/{id}', ['as' => 'edit-image', 'uses' => 'imagedraw\ImagedrawController@editimage']);
 
 

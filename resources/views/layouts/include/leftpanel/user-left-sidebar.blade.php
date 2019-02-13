@@ -27,7 +27,7 @@ $currentRoute = Route::current()->getName();
             </li>
             
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link {{ ($currentRoute == 'imagedraw' || $currentRoute == 'imagedrawlist' ? 'is-active' : '') }}" href="{{ route('imagedrawlist') }}">
+                <a class="c-sidebar__link {{ ($currentRoute == 'edit-image' || $currentRoute == 'imagedraw' || $currentRoute == 'imagedrawlist' ? 'is-active' : '') }}" href="{{ route('imagedrawlist') }}">
                     <i class="fa fa-picture-o u-mr-xsmall"></i>Image Draw
                 </a>
             </li>
